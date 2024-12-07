@@ -8,6 +8,15 @@
     "appointments": "Appointments",
     "contact": "Contact"
   },
+  "home": {
+    "emergency": {
+      "title": "24/7 Emergency Services",
+      "description": "Our emergency department is available 24/7 with experienced medical staff ready to provide immediate care"
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Al-Ameen Hospital"
+    }
+  },
   "hero": {
     "title": "Al-Ameen General Hospital",
     "description": "Providing comprehensive healthcare with the highest quality standards since 1399 AH",
@@ -30,7 +39,7 @@
   },
   "services": {
     "sectionTitle": "Our Medical Services",
-    "sectionDescription": "We provide a comprehensive range of specialized medical services",
+    "sectionDescription": "We provide comprehensive specialized medical services",
     "cardiology": {
       "title": "Cardiology",
       "description": "Diagnosis and treatment of heart and vascular diseases"
@@ -54,7 +63,19 @@
     "ent": {
       "title": "ENT",
       "description": "Ear, nose, and throat treatment"
+    },
+    "neurology": {
+      "title": "Neurology Department",
+      "description": "Diagnosis and treatment of nervous system disorders"
     }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "phone": "+966 12 736 6100",
+    "email": "info@alameenhospital.com",
+    "address": "Al-Ameen General Hospital, Jeddah, Saudi Arabia",
+    "bookAppointment": "Book Appointment",
+    "emergencyNumber": "+966 12 736 6100"
   },
   "footer": {
     "contact": "Contact Information",
@@ -66,7 +87,9 @@
     "privacy": "Privacy Policy",
     "workingHours": "Working Hours",
     "weekdays": "Weekdays",
+    "weekdaysTiming": "8:00 AM - 10:00 PM",
     "weekends": "Weekends",
+    "weekendsTiming": "9:00 AM - 8:00 PM",
     "emergency24": "Emergency service available 24/7",
     "rights": "All Rights Reserved"
   },

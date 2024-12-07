@@ -15,7 +15,7 @@ const Footer = () => {
             <div className="space-y-2">
               <p className="flex items-center">
                 <FaPhone className="mr-2" />
-                <span>+966 123 456 789</span>
+                <span dir="ltr">+966 127 366 100</span>
               </p>
               <p className="flex items-center">
                 <FaEnvelope className="mr-2" />
@@ -43,15 +43,15 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">{t('footer.workingHours')}</h3>
             <ul className="space-y-2">
-              <li>{t('footer.weekdays')}: 8:00 AM - 10:00 PM</li>
-              <li>{t('footer.weekends')}: 9:00 AM - 8:00 PM</li>
+              <li>{t('footer.weekdays')}: {t('footer.weekdaysTiming')}</li>
+              <li>{t('footer.weekends')}: {t('footer.weekendsTiming')}</li>
               <li className="text-red-400">{t('footer.emergency24')}</li>
             </ul>
           </div>
         </div>
 
         <div className="mt-8 pt-4 border-t border-gray-700 text-center">
-          <p>© 2024 Al-Ameen Hospital. {t('footer.rights')}</p>
+          <p> 2024 Al-Ameen Hospital. {t('footer.rights')}</p>
         </div>
       </div>
     </footer>

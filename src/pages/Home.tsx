@@ -24,8 +24,7 @@ const Home = () => {
             <h2 className="text-3xl font-bold mb-4">{t('home.emergency.title')}</h2>
             <p className="text-xl mb-4">{t('home.emergency.description')}</p>
             <div className="text-4xl font-bold">
-              <a href="tel:+966123456789">+966 123 456 789</a>
-            </div>
+            <a href="tel:+966127366100" dir="ltr">+966 127 366 100</a>            </div>
           </div>
         </section>
 
