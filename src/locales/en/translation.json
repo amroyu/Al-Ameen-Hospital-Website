@@ -1,0 +1,80 @@
+{
+  "header": {
+    "hospitalName": "Al-Ameen General Hospital",
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "doctors": "Doctors",
+    "appointments": "Appointments",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Al-Ameen General Hospital",
+    "description": "Providing comprehensive healthcare with the highest quality standards since 1399 AH",
+    "bookAppointment": "Book Appointment",
+    "ourServices": "Our Services",
+    "features": {
+      "emergency": {
+        "title": "Emergency Care",
+        "description": "24/7 Emergency Services"
+      },
+      "doctors": {
+        "title": "Qualified Doctors",
+        "description": "Highly experienced medical team"
+      },
+      "technology": {
+        "title": "Modern Technology",
+        "description": "Latest medical equipment and technology"
+      }
+    }
+  },
+  "services": {
+    "sectionTitle": "Our Medical Services",
+    "sectionDescription": "We provide a comprehensive range of specialized medical services",
+    "cardiology": {
+      "title": "Cardiology",
+      "description": "Diagnosis and treatment of heart and vascular diseases"
+    },
+    "ophthalmology": {
+      "title": "Ophthalmology",
+      "description": "Eye care and surgery with latest technology"
+    },
+    "pediatrics": {
+      "title": "Pediatrics",
+      "description": "Comprehensive healthcare for children"
+    },
+    "dental": {
+      "title": "Dental Care",
+      "description": "Comprehensive dental services"
+    },
+    "orthopedics": {
+      "title": "Orthopedics",
+      "description": "Bone and joint treatment and surgery"
+    },
+    "ent": {
+      "title": "ENT",
+      "description": "Ear, nose, and throat treatment"
+    }
+  },
+  "footer": {
+    "contact": "Contact Information",
+    "address": "5889 Abu Bakr Al-Siddiq - Al-Salamah - Taif 26511",
+    "quickLinks": "Quick Links",
+    "appointments": "Appointments",
+    "emergency": "Emergency",
+    "careers": "Careers",
+    "privacy": "Privacy Policy",
+    "workingHours": "Working Hours",
+    "weekdays": "Weekdays",
+    "weekends": "Weekends",
+    "emergency24": "Emergency service available 24/7",
+    "rights": "All Rights Reserved"
+  },
+  "about": {
+    "title": "About Al-Ameen General Hospital",
+    "description": "Al-Ameen General Hospital was established in 1399 AH under the supervision of Al-Ameen family in Saudi Arabia",
+    "vision": "Our Vision",
+    "mission": "Our Mission",
+    "values": "Our Values"
+  }
+}
