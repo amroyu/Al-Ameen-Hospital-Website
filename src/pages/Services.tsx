@@ -16,44 +16,55 @@ interface ServiceItem {
 const Services: React.FC = () => {
   const { t } = useTranslation();
 
-  const mainDepartments = t('departments.list', { returnObjects: true }) as string[];
-  const contactMethods = t('contact.appointment.methods', { returnObjects: true }) as string[];
+  // Add error handling and type checking for translations
+  const getTranslatedList = (key: string): string[] => {
+    try {
+      const list = t(key, { returnObjects: true });
+      return Array.isArray(list) ? list : [];
+    } catch (error) {
+      console.error(`Error getting translation for ${key}:`, error);
+      return [];
+    }
+  };
+
+  const mainDepartments = getTranslatedList('departments.list');
+  const contactMethods = getTranslatedList('contact.appointment.methods');
 
   const medicalServices: ServiceItem[] = [
     {
       icon: <FaEye className="w-12 h-12 text-primary-600" />,
       title: t('services.ophthalmology.title'),
-      services: t('services.ophthalmology.services', { returnObjects: true }) as string[]
+      services: getTranslatedList('services.ophthalmology.services')
     },
     {
       icon: <FaPaintBrush className="w-12 h-12 text-primary-600" />,
       title: t('services.plastic.title'),
-      services: t('services.plastic.services', { returnObjects: true }) as string[]
+      services: getTranslatedList('services.plastic.services')
     },
     {
       icon: <FaBaby className="w-12 h-12 text-primary-600" />,
       title: t('services.pediatricICU.title'),
-      services: t('services.pediatricICU.services', { returnObjects: true }) as string[]
+      services: getTranslatedList('services.pediatricICU.services')
     },
     {
       icon: <FaHeadSideVirus className="w-12 h-12 text-primary-600" />,
       title: t('services.ent.title'),
-      services: t('services.ent.services', { returnObjects: true }) as string[]
+      services: getTranslatedList('services.ent.services')
     },
     {
       icon: <FaStethoscope className="w-12 h-12 text-primary-600" />,
       title: t('services.urology.title'),
-      services: t('services.urology.services', { returnObjects: true }) as string[]
+      services: getTranslatedList('services.urology.services')
     },
     {
       icon: <FaTooth className="w-12 h-12 text-primary-600" />,
       title: t('services.dental.title'),
-      services: t('services.dental.services', { returnObjects: true }) as string[]
+      services: getTranslatedList('services.dental.services')
     },
     {
       icon: <FaHeartbeat className="w-12 h-12 text-primary-600" />,
       title: t('services.cardiology.title'),
-      services: t('services.cardiology.services', { returnObjects: true }) as string[]
+      services: getTranslatedList('services.cardiology.services')
     }
   ];
 
@@ -61,7 +72,7 @@ const Services: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Helmet>
         <title>{t('services.title')} | {t('header.hospitalName')}</title>
-        <meta name="description" content="الخدمات الطبية المتكاملة في مستشفى الأمين العام" />
+        <meta name="description" content={t('services.sectionDescription')} />
       </Helmet>
 
       {/* Main Departments Section */}
@@ -71,17 +82,23 @@ const Services: React.FC = () => {
             {t('departments.title')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mainDepartments.map((department: string, index: number) => (
-              <div 
-                key={index}
-                className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow duration-300"
-              >
-                <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                  <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
-                  <h3 className="text-lg font-semibold">{department}</h3>
+            {mainDepartments && mainDepartments.length > 0 ? (
+              mainDepartments.map((department: string, index: number) => (
+                <div 
+                  key={index}
+                  className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                    <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                    <h3 className="text-lg font-semibold">{department}</h3>
+                  </div>
                 </div>
+              ))
+            ) : (
+              <div className="col-span-3 text-center text-gray-500">
+                {t('departments.title')}
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -103,14 +120,18 @@ const Services: React.FC = () => {
                   {service.icon}
                   <h3 className="text-2xl font-bold">{service.title}</h3>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {service.services.map((item: string, idx: number) => (
-                    <div key={idx} className="flex items-center space-x-3 rtl:space-x-reverse">
-                      <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
-                      <span className="text-gray-700">{item}</span>
-                    </div>
-                  ))}
-                </div>
+                {service.services && service.services.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {service.services.map((item: string, idx: number) => (
+                      <div key={idx} className="flex items-center space-x-3 rtl:space-x-reverse">
+                        <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                        <span className="text-gray-700">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-center text-gray-500">No services available</p>
+                )}
               </div>
             ))}
           </div>
@@ -135,12 +156,16 @@ const Services: React.FC = () => {
               <div className="pt-4">
                 <h3 className="font-semibold text-lg mb-3">{t('contact.appointment.title')}:</h3>
                 <ul className="space-y-2">
-                  {contactMethods.map((method: string, index: number) => (
-                    <li key={index} className="flex items-center space-x-2 rtl:space-x-reverse">
-                      <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
-                      <span>{method}</span>
-                    </li>
-                  ))}
+                  {contactMethods && contactMethods.length > 0 ? (
+                    contactMethods.map((method: string, index: number) => (
+                      <li key={index} className="flex items-center space-x-2 rtl:space-x-reverse">
+                        <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
+                        <span>{method}</span>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-center text-gray-500">No contact methods available</li>
+                  )}
                 </ul>
               </div>
             </div>

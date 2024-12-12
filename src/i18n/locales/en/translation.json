@@ -1,0 +1,87 @@
+{
+  "header": {
+    "bookAppointment": "Book Appointment",
+    "english": "English",
+    "contact": "Contact",
+    "appointments": "Appointments",
+    "doctors": "Doctors",
+    "services": "Services",
+    "about": "About",
+    "home": "Home"
+  },
+  "hero": {
+    "title": "Al-Ameen General Hospital",
+    "subtitle": "Providing comprehensive healthcare with the highest quality standards since 1399 AH",
+    "ourServices": "Our Services",
+    "bookAppointment": "Book Appointment"
+  },
+  "features": {
+    "modernTechnology": {
+      "title": "Modern Technology",
+      "description": "Latest medical equipment and technology"
+    },
+    "qualifiedDoctors": {
+      "title": "Qualified Doctors",
+      "description": "Highly experienced medical team"
+    },
+    "emergencyCare": {
+      "title": "Emergency Care",
+      "description": "Emergency Services 24/7"
+    }
+  },
+  "services": {
+    "title": "Our Medical Services",
+    "subtitle": "We provide comprehensive specialized medical services",
+    "orthopedics": {
+      "title": "Orthopedics",
+      "description": "Bone and joint treatment and surgery"
+    },
+    "neurology": {
+      "title": "Neurology Department",
+      "description": "Diagnosis and treatment of nervous system disorders"
+    },
+    "cardiology": {
+      "title": "Cardiology",
+      "description": "Diagnosis and treatment of heart and vascular diseases"
+    },
+    "ophthalmology": {
+      "title": "Ophthalmology",
+      "description": "Eye care and surgery with latest technology"
+    },
+    "dentalCare": {
+      "title": "Dental Care",
+      "description": "Comprehensive dental services"
+    },
+    "pediatrics": {
+      "title": "Pediatrics",
+      "description": "Comprehensive healthcare for children"
+    }
+  },
+  "emergency": {
+    "title": "Emergency Services 24/7",
+    "description": "Our emergency department is available 24/7 with experienced medical staff ready to provide immediate care",
+    "phone": "+966 127 366 100"
+  },
+  "footer": {
+    "workingHours": {
+      "title": "Working Hours",
+      "weekdays": "Weekdays: 8:00 AM - 10:00 PM",
+      "weekends": "Weekends: 9:00 AM - 8:00 PM",
+      "emergency": "Emergency service available 24/7"
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "appointments": "Appointments",
+      "emergency": "Emergency",
+      "careers": "Careers",
+      "privacy": "Privacy Policy"
+    },
+    "contactInfo": {
+      "title": "Contact Information",
+      "phone": "+966 127 366 100",
+      "email": "info@alameenhospital.com",
+      "address": "Abu Bakr Al-Siddiq - Al-Salamah - Taif 26511 5885"
+    },
+    "copyright": "Al-Ameen Hospital. All Rights Reserved 2024"
+  }
+}

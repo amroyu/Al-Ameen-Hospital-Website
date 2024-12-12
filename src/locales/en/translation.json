@@ -6,7 +6,82 @@
     "services": "Services",
     "doctors": "Doctors",
     "appointments": "Appointments",
-    "contact": "Contact"
+    "contact": "Contact",
+    "bookAppointment": "Book Appointment"
+  },
+  "services": {
+    "title": "Our Medical Services",
+    "sectionTitle": "Our Medical Departments",
+    "sectionDescription": "We provide comprehensive, high-quality medical services across various specialties",
+    "departments": {
+      "orthopedics": "Orthopedics & Fractures",
+      "generalSurgery": "General Surgery",
+      "ent": "Ear, Nose & Throat",
+      "obgyn": "Obstetrics & Gynecology",
+      "digestive": "Digestive System",
+      "urology": "Urology",
+      "respiratory": "Respiratory System",
+      "neurology": "Neurology",
+      "ophthalmology": "Ophthalmology",
+      "pediatrics": "Pediatrics",
+      "cardiology": "Cardiology",
+      "dental": "Dental Care",
+      "rheumatology": "Rheumatology",
+      "dermatology": "Dermatology",
+      "medicalConsultations": "Medical Consultations",
+      "psychology": "Psychology",
+      "bloodDiseases": "Blood Diseases",
+      "kidneyDiseases": "Kidney Diseases",
+      "plasticSurgery": "Plastic Surgery",
+      "internalMedicine": "Internal Medicine"
+    },
+    "noServices": "Coming Soon"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "hotline": "24/7 Hotline",
+    "hotlineNumber": "+966 12 736 6500",
+    "bookAppointment": "Book Appointment",
+    "visitHospital": "Visit Hospital Directly",
+    "workingHours": "Working Hours",
+    "workingDays": "Weekdays",
+    "workingTime": "8:00 AM - 10:00 PM",
+    "emergencyService": "24/7 Emergency Service",
+    "quickLinks": "Quick Links",
+    "location": "Location",
+    "directions": "Directions",
+    "insurance": "Insurance",
+    "specialtyServices": "Specialty Services"
+  },
+  "departments": {
+    "title": "Main Departments",
+    "sectionTitle": "Main Departments",
+    "list": [
+      "Orthopedics and Fracture Treatment",
+      "General Surgery",
+      "Laboratory",
+      "Ear, Nose and Throat",
+      "Cardiac Surgery",
+      "Vascular Diseases",
+      "Obstetrics and Gynecology",
+      "Hematology",
+      "Endocrinology",
+      "Gastroenterology",
+      "Neonatal Care",
+      "Pediatrics",
+      "Intensive Care",
+      "Rheumatology",
+      "Internal Medicine",
+      "Respiratory Diseases",
+      "Ophthalmology",
+      "Dental",
+      "Neurology",
+      "Urology",
+      "Dermatology",
+      "Nephrology",
+      "Medical Consultations",
+      "Psychiatry"
+    ]
   },
   "home": {
     "emergency": {
@@ -37,46 +112,6 @@
       }
     }
   },
-  "services": {
-    "sectionTitle": "Our Medical Services",
-    "sectionDescription": "We provide comprehensive specialized medical services",
-    "cardiology": {
-      "title": "Cardiology",
-      "description": "Diagnosis and treatment of heart and vascular diseases"
-    },
-    "ophthalmology": {
-      "title": "Ophthalmology",
-      "description": "Eye care and surgery with latest technology"
-    },
-    "pediatrics": {
-      "title": "Pediatrics",
-      "description": "Comprehensive healthcare for children"
-    },
-    "dental": {
-      "title": "Dental Care",
-      "description": "Comprehensive dental services"
-    },
-    "orthopedics": {
-      "title": "Orthopedics",
-      "description": "Bone and joint treatment and surgery"
-    },
-    "ent": {
-      "title": "ENT",
-      "description": "Ear, nose, and throat treatment"
-    },
-    "neurology": {
-      "title": "Neurology Department",
-      "description": "Diagnosis and treatment of nervous system disorders"
-    }
-  },
-  "contact": {
-    "title": "Contact Us",
-    "phone": "+966 12 736 6100",
-    "email": "info@alameenhospital.com",
-    "address": "Al-Ameen General Hospital, Jeddah, Saudi Arabia",
-    "bookAppointment": "Book Appointment",
-    "emergencyNumber": "+966 12 736 6100"
-  },
   "footer": {
     "contact": "Contact Information",
     "address": "5889 Abu Bakr Al-Siddiq - Al-Salamah - Taif 26511",
@@ -95,6 +130,7 @@
   },
   "about": {
     "title": "About Al-Ameen General Hospital",
+    "sectionTitle": "About Al-Ameen General Hospital",
     "description": "Al-Ameen General Hospital was established in 1399 AH under the supervision of Al-Ameen family in Saudi Arabia",
     "vision": "Our Vision",
     "mission": "Our Mission",

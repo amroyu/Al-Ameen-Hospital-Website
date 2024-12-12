@@ -1,0 +1,107 @@
+/* Medical Team Page Styles */
+.team-section {
+  @apply py-16 px-4 md:px-8 max-w-7xl mx-auto;
+}
+
+.team-title {
+  @apply text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800;
+}
+
+.team-subtitle {
+  @apply text-lg text-center mb-12 text-gray-600 max-w-2xl mx-auto;
+}
+
+.team-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12;
+}
+
+.doctor-card {
+  @apply bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:-translate-y-2;
+}
+
+.doctor-image {
+  @apply w-full h-64 object-cover object-center;
+}
+
+.doctor-info {
+  @apply p-6;
+}
+
+.doctor-name {
+  @apply text-xl font-bold mb-2 text-gray-800;
+}
+
+.doctor-specialty {
+  @apply text-primary-600 font-medium mb-3;
+}
+
+.doctor-education {
+  @apply text-sm text-gray-600 mb-2;
+}
+
+.doctor-experience {
+  @apply text-sm text-gray-600 mb-4;
+}
+
+.book-appointment-btn {
+  @apply w-full bg-primary-600 text-white py-3 px-4 rounded-lg font-medium 
+         hover:bg-primary-700 transition-colors duration-200 
+         flex items-center justify-center gap-2;
+}
+
+.join-section {
+  @apply mt-16 bg-primary-600 text-white rounded-xl p-8 text-center;
+}
+
+.join-title {
+  @apply text-2xl font-bold mb-4;
+}
+
+.join-description {
+  @apply mb-6 max-w-2xl mx-auto;
+}
+
+.join-btn {
+  @apply bg-white text-primary-600 py-3 px-8 rounded-lg font-medium 
+         hover:bg-gray-100 transition-colors duration-200 inline-block;
+}
+
+/* Working Hours Section */
+.working-hours {
+  @apply bg-gray-50 py-12 mt-16;
+}
+
+.hours-container {
+  @apply max-w-7xl mx-auto px-4 md:px-8;
+}
+
+.hours-grid {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.hours-card {
+  @apply bg-white p-6 rounded-xl shadow-md;
+}
+
+.hours-title {
+  @apply text-lg font-bold mb-4 text-gray-800;
+}
+
+.hours-list {
+  @apply space-y-2 text-gray-600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .team-grid {
+    @apply grid-cols-1 gap-6;
+  }
+  
+  .doctor-image {
+    @apply h-48;
+  }
+  
+  .hours-grid {
+    @apply grid-cols-1 gap-6;
+  }
+}

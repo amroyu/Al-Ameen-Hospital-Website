@@ -1,0 +1,87 @@
+{
+  "header": {
+    "bookAppointment": "حجز موعد",
+    "english": "English",
+    "contact": "اتصل بنا",
+    "appointments": "المواعيد",
+    "doctors": "الأطباء",
+    "services": "الخدمات",
+    "about": "عن المستشفى",
+    "home": "الرئيسية"
+  },
+  "hero": {
+    "title": "مستشفى الأمين العام",
+    "subtitle": "تقديم رعاية صحية شاملة بأعلى معايير الجودة منذ ١٣٩٩ هـ",
+    "ourServices": "خدماتنا",
+    "bookAppointment": "حجز موعد"
+  },
+  "features": {
+    "modernTechnology": {
+      "title": "تقنيات حديثة",
+      "description": "أحدث المعدات والتقنيات الطبية"
+    },
+    "qualifiedDoctors": {
+      "title": "أطباء مؤهلون",
+      "description": "فريق طبي ذو خبرة عالية"
+    },
+    "emergencyCare": {
+      "title": "رعاية طارئة",
+      "description": "خدمات الطوارئ ٢٤/٧"
+    }
+  },
+  "services": {
+    "title": "خدماتنا الطبية",
+    "subtitle": "نقدم خدمات طبية تخصصية شاملة",
+    "orthopedics": {
+      "title": "العظام",
+      "description": "علاج وجراحة العظام والمفاصل"
+    },
+    "neurology": {
+      "title": "الأعصاب",
+      "description": "تشخيص وعلاج اضطرابات الجهاز العصبي"
+    },
+    "cardiology": {
+      "title": "القلب",
+      "description": "تشخيص وعلاج أمراض القلب والأوعية الدموية"
+    },
+    "ophthalmology": {
+      "title": "العيون",
+      "description": "رعاية وجراحة العيون بأحدث التقنيات"
+    },
+    "dentalCare": {
+      "title": "طب الأسنان",
+      "description": "خدمات طب الأسنان الشاملة"
+    },
+    "pediatrics": {
+      "title": "طب الأطفال",
+      "description": "رعاية صحية شاملة للأطفال"
+    }
+  },
+  "emergency": {
+    "title": "خدمات الطوارئ ٢٤/٧",
+    "description": "قسم الطوارئ لدينا متاح على مدار الساعة مع طاقم طبي ذو خبرة جاهز لتقديم الرعاية الفورية",
+    "phone": "+966 127 366 100"
+  },
+  "footer": {
+    "workingHours": {
+      "title": "ساعات العمل",
+      "weekdays": "أيام الأسبوع: ٨:٠٠ ص - ١٠:٠٠ م",
+      "weekends": "نهاية الأسبوع: ٩:٠٠ ص - ٨:٠٠ م",
+      "emergency": "خدمة الطوارئ متاحة ٢٤/٧"
+    },
+    "quickLinks": {
+      "title": "روابط سريعة",
+      "appointments": "المواعيد",
+      "emergency": "الطوارئ",
+      "careers": "الوظائف",
+      "privacy": "سياسة الخصوصية"
+    },
+    "contactInfo": {
+      "title": "معلومات الاتصال",
+      "phone": "+966 127 366 100",
+      "email": "info@alameenhospital.com",
+      "address": "أبو بكر الصديق - السلامة - طيف ٢٦٥١١ ٥٨٨٥"
+    },
+    "copyright": "مستشفى الأمين. جميع الحقوق محفوظة ٢٠٢٤"
+  }
+}

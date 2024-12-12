@@ -1,59 +1,148 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import logo from '../../assets/images/hospital-logo.png';
 
-const Header = () => {
+const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setIsScrolled(isScrolled);
+    };
+
+    document.addEventListener('scroll', handleScroll);
+    return () => document.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'ar' : 'en';
+    const newLang = i18n.language === 'ar' ? 'en' : 'ar';
     i18n.changeLanguage(newLang);
-    document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const navLinks = [
+    { path: '/', label: 'header.home' },
+    { path: '/about', label: 'header.about' },
+    { path: '/services', label: 'header.services' },
+    { path: '/doctors', label: 'header.doctors' },
+    { path: '/appointments', label: 'header.appointments' },
+    { path: '/contact', label: 'header.contact' },
+  ];
+
+  const isActive = (path: string) => location.pathname === path;
+
   return (
-    <header className="bg-blue-600 text-white">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
-          <Link to="/" className="text-2xl font-bold">
-            {t('header.hospitalName')}
-          </Link>
+    <header className="fixed w-full z-50 bg-white shadow-md">
+      <div className="container mx-auto px-4 lg:px-6">
+        <div className="flex items-center justify-between h-28">
+          {/* Logo - Moved to the right for Arabic */}
+          <div className="flex items-center order-2 md:order-3">
+            <Link to="/" className="flex items-center">
+              <img
+                src={logo}
+                alt="Al-Ameen Hospital"
+                className="h-24 w-auto"
+              />
+            </Link>
+          </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-          </button>
-
-          {/* Navigation menu */}
-          <nav className={`md:flex ${isMenuOpen ? 'block' : 'hidden'}`}>
-            <ul className="md:flex md:items-center">
-              <li className="md:mx-4">
-                <Link to="/">{t('header.home')}</Link>
-              </li>
-              <li className="md:mx-4">
-                <Link to="/about">{t('header.about')}</Link>
-              </li>
-              <li className="md:mx-4">
-                <Link to="/services">{t('header.services')}</Link>
-              </li>
-              <li className="md:mx-4">
-                <Link to="/doctors">{t('header.doctors')}</Link>
-              </li>
-            </ul>
+          {/* Navigation - Centered */}
+          <nav className="hidden md:flex items-center space-x-6 rtl:space-x-reverse order-1 md:order-2 flex-grow justify-center">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`relative px-2 py-1 text-sm font-medium transition-colors duration-300 group ${
+                  isActive(link.path)
+                    ? 'text-primary-600'
+                    : 'text-gray-700 hover:text-primary-600'
+                }`}
+              >
+                {t(link.label)}
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary-500 transform origin-left transition-transform duration-300 ${
+                  isActive(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                }`}></span>
+              </Link>
+            ))}
           </nav>
 
-          {/* Language toggle */}
+          {/* Language Toggle and Appointment Button - Moved to the left for Arabic */}
+          <div className="flex items-center space-x-4 rtl:space-x-reverse order-3 md:order-1">
+            <button
+              onClick={toggleLanguage}
+              className="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
+            >
+              {i18n.language === 'ar' ? 'English' : 'العربية'}
+            </button>
+            <Link
+              to="/appointments"
+              className="px-6 py-2.5 rounded-full text-sm font-medium bg-primary-500 text-white hover:bg-primary-600 hover:shadow-lg transition-all duration-300"
+            >
+              {t('header.bookAppointment')}
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
           <button
-            onClick={toggleLanguage}
-            className="px-4 py-2 bg-white text-blue-600 rounded"
+            onClick={toggleMobileMenu}
+            className="md:hidden focus:outline-none order-1"
+            aria-label="Toggle menu"
           >
-            {i18n.language === 'en' ? 'عربي' : 'English'}
+            <svg
+              className="w-6 h-6 text-gray-700"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
           </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden transform transition-transform duration-300 ${
+          isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
+        } absolute top-full left-0 right-0 bg-white shadow-lg`}
+      >
+        <div className="px-6 py-4 space-y-2">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`block px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-300 ${
+                isActive(link.path)
+                  ? 'bg-primary-50 text-primary-600'
+                  : 'text-gray-700 hover:bg-gray-50 hover:text-primary-600'
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t(link.label)}
+            </Link>
+          ))}
+          <div className="pt-2 border-t border-gray-100">
+            <button
+              onClick={() => {
+                toggleLanguage();
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full px-4 py-2.5 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-50"
+            >
+              {i18n.language === 'ar' ? 'English' : 'العربية'}
+            </button>
+          </div>
         </div>
       </div>
     </header>
