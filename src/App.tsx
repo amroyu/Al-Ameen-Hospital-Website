@@ -8,6 +8,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Doctors from './pages/Doctors';
+import Appointments from './pages/Appointments';
+import Contact from './pages/Contact';
 
 const App: React.FC = () => {
   const { i18n } = useTranslation();
@@ -34,6 +36,8 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/doctors" element={<Doctors />} />
+            <Route path="/appointments" element={<Appointments />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
 

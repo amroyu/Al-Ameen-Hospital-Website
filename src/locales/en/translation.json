@@ -15,17 +15,29 @@
     "sectionDescription": "We provide comprehensive, high-quality medical services across various specialties",
     "departments": {
       "orthopedics": "Orthopedics & Fractures",
+      "orthopedicsDescription": "Specialized care for bone, joint, and muscle conditions",
       "generalSurgery": "General Surgery",
+      "generalSurgeryDescription": "Comprehensive surgical procedures and treatments",
       "ent": "Ear, Nose & Throat",
+      "entDescription": "Expert care for ear, nose, and throat conditions",
       "obgyn": "Obstetrics & Gynecology",
+      "obgynDescription": "Complete women's health and maternity care",
       "digestive": "Digestive System",
+      "digestiveDescription": "Treatment of digestive system disorders",
       "urology": "Urology",
+      "urologyDescription": "Specialized care for urinary tract and male reproductive system",
       "respiratory": "Respiratory System",
+      "respiratoryDescription": "Treatment of respiratory and lung conditions",
       "neurology": "Neurology",
+      "neurologyDescription": "Expert care for neurological disorders",
       "ophthalmology": "Ophthalmology",
+      "ophthalmologyDescription": "Comprehensive eye care services",
       "pediatrics": "Pediatrics",
+      "pediatricsDescription": "Specialized healthcare for children",
       "cardiology": "Cardiology",
+      "cardiologyDescription": "Advanced heart and cardiovascular care",
       "dental": "Dental Care",
+      "dentalDescription": "Complete dental and oral health services",
       "rheumatology": "Rheumatology",
       "dermatology": "Dermatology",
       "medicalConsultations": "Medical Consultations",
@@ -39,6 +51,27 @@
   },
   "contact": {
     "title": "Contact Us",
+    "metaDescription": "Contact Al-Ameen Hospital in Taif - We're here to help",
+    "pageTitle": "Contact Us",
+    "pageSubtitle": "We're here to answer your inquiries",
+    "contactInfo": "Contact Information",
+    "callUs": "Call Us",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Address",
+    "addressValue": "King Faisal Rd, Al Salamah, Taif 26511",
+    "mapTitle": "Al-Ameen Hospital Location",
+    "sendMessage": "Send a Message",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
+    "emailPlaceholder": "Enter your email address",
+    "phone": "Phone Number",
+    "phonePlaceholder": "Enter your phone number",
+    "subject": "Subject",
+    "subjectPlaceholder": "Enter message subject",
+    "message": "Message",
+    "messagePlaceholder": "Enter your message here",
+    "sendButton": "Send Message",
     "hotline": "24/7 Hotline",
     "hotlineNumber": "+966 12 736 6500",
     "bookAppointment": "Book Appointment",
@@ -130,10 +163,109 @@
   },
   "about": {
     "title": "About Al-Ameen General Hospital",
-    "sectionTitle": "About Al-Ameen General Hospital",
-    "description": "Al-Ameen General Hospital was established in 1399 AH under the supervision of Al-Ameen family in Saudi Arabia",
-    "vision": "Our Vision",
-    "mission": "Our Mission",
-    "values": "Our Values"
+    "metaDescription": "Learn about Al-Ameen General Hospital's history, departments, and services",
+    "pageTitle": "About Al-Ameen General Hospital",
+    "description": "Al-Ameen General Hospital was established in 1399 AH under the supervision of Al-Ameen family in Saudi Arabia. The hospital provides comprehensive healthcare services with the best qualified medical staff.",
+    "stats": {
+      "established": {
+        "label": "Established in",
+        "suffix": "AH"
+      },
+      "doctors": {
+        "label": "Specialist Doctors",
+        "number": "100+"
+      },
+      "departments": {
+        "label": "Medical Departments",
+        "number": "24"
+      }
+    },
+    "departments": {
+      "title": "Main Departments",
+      "list": [
+        "Orthopedics & Fractures Department",
+        "General Surgery Department",
+        "Laboratory Department",
+        "Ear, Nose & Throat Department",
+        "Cardiac Surgery Department",
+        "Vascular Disease Department",
+        "Obstetrics & Gynecology Department",
+        "Hematology Department",
+        "Endocrinology Department",
+        "Gastroenterology Department",
+        "Neonatal Care Department",
+        "Pediatrics Department"
+      ]
+    }
+  },
+  "appointments": {
+    "title": "Book an Appointment",
+    "subtitle": "Schedule your visit with our medical specialists",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
+    "phoneNumber": "Phone Number",
+    "phonePlaceholder": "Enter your phone number",
+    "email": "Email Address",
+    "emailPlaceholder": "Enter your email address",
+    "department": "Department",
+    "selectDepartment": "Select department",
+    "preferredDate": "Preferred Date",
+    "preferredTime": "Preferred Time",
+    "notes": "Additional Notes",
+    "notesPlaceholder": "Any specific requirements or concerns",
+    "submitButton": "Book Appointment",
+    "submitting": "Booking...",
+    "importantNotes": "Important Notes",
+    "note1": "Please arrive 15 minutes before your scheduled appointment time",
+    "note2": "Appointments are available from Sunday to Thursday, 8:00 AM to 10:00 PM",
+    "note3": "Rescheduling must be done at least 24 hours before the appointment",
+    "note4": "For emergencies, please call our 24/7 hotline: +966 12 736 6500"
+  },
+  "doctors": {
+    "title": "Our Medical Team",
+    "pageSubtitle": "Expert healthcare professionals dedicated to your well-being",
+    "bookAppointment": "Book Appointment",
+    "team": [
+      {
+        "name": "Dr. Khalid Al-Harbi",
+        "specialty": "Internal Medicine",
+        "qualifications": [
+          "Fellowship in Endocrinology - University of British Columbia",
+          "Certified in Diabetes Management"
+        ]
+      },
+      {
+        "name": "Dr. Layla Al-Qahtani",
+        "specialty": "Dermatology",
+        "qualifications": [
+          "Fellowship in Dermatological Surgery - King's College London",
+          "Expert in Cosmetic Dermatology"
+        ]
+      },
+      {
+        "name": "Dr. Abdulrahman Al-Shehri",
+        "specialty": "Neurology",
+        "qualifications": [
+          "Fellowship in Epilepsy and EEG - Cleveland Clinic",
+          "Board Certified Neurologist"
+        ]
+      },
+      {
+        "name": "Dr. Nora Al-Rashid",
+        "specialty": "Family Medicine",
+        "qualifications": [
+          "Residency in Family Medicine - McMaster University",
+          "Certified in Preventive Care"
+        ]
+      },
+      {
+        "name": "Dr. Faisal Al-Ghamdi",
+        "specialty": "Gastroenterology",
+        "qualifications": [
+          "Fellowship in Gastroenterology - Mayo Clinic",
+          "Certified in Advanced Endoscopy"
+        ]
+      }
+    ]
   }
 }

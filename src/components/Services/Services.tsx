@@ -50,12 +50,13 @@ const Services: React.FC = () => {
                                 transition-colors duration-300">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800 ml-4 group-hover:text-primary-600 
-                               transition-colors duration-300">
+                    <h3 className="text-lg font-semibold text-gray-800 mr-4 flex-grow">
                       {t(`services.departments.${service.key}`)}
                     </h3>
                   </div>
-                  {t(`services.noServices`)}
+                  <p className="text-gray-600 text-sm">
+                    {t(`services.departments.${service.key}Description`, { fallback: '' })}
+                  </p>
                 </div>
               </div>
             );

@@ -1,102 +1,95 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import { FaPhone, FaEnvelope, FaCalendar } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/Common/Button';
 import SectionTitle from '../components/Common/SectionTitle';
+import LoadingSpinner from '../components/Common/LoadingSpinner';
+
+interface Doctor {
+  name: string;
+  specialty: string;
+  qualifications: string[];
+}
 
 const Doctors = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const [doctors, setDoctors] = useState<Doctor[]>([]);
 
-  const doctors = [
-    {
-      name: "د. محمد العبدالله",
-      specialty: "جراحة القلب والأوعية الدموية",
-      image: "/images/doctors/doctor1.jpg",
-      education: "دكتوراه في جراحة القلب - جامعة الملك سعود",
-      experience: "15 عاماً من الخبرة"
-    },
-    {
-      name: "د. سارة الأحمد",
-      specialty: "طب العيون",
-      image: "/images/doctors/doctor2.jpg",
-      education: "زمالة في طب العيون - جامعة هارفارد",
-      experience: "12 عاماً من الخبرة"
-    },
-    {
-      name: "د. أحمد المالكي",
-      specialty: "جراحة العظام",
-      image: "/images/doctors/doctor3.jpg",
-      education: "دكتوراه في جراحة العظام - جامعة أكسفورد",
-      experience: "18 عاماً من الخبرة"
-    },
-    {
-      name: "د. فاطمة الزهراني",
-      specialty: "طب الأطفال",
-      image: "/images/doctors/doctor4.jpg",
-      education: "زمالة في طب الأطفال - جامعة تورنتو",
-      experience: "10 أعوام من الخبرة"
-    }
-  ];
+  useEffect(() => {
+    if (!i18n.isInitialized) return;
+
+    const doctorsData: Doctor[] = Array.from({ length: 5 }).map((_, index) => ({
+      name: t(`doctors.team.${index}.name`),
+      specialty: t(`doctors.team.${index}.specialty`),
+      qualifications: [
+        t(`doctors.team.${index}.qualifications.0`),
+        t(`doctors.team.${index}.qualifications.1`)
+      ]
+    }));
+
+    setDoctors(doctorsData);
+    setIsLoading(false);
+  }, [t, i18n.isInitialized, i18n.language]);
 
   return (
-    <>
+    <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>الأطباء - مستشفى الأمين العام</title>
-        <meta name="description" content="تعرف على فريقنا الطبي المتميز في مستشفى الأمين العام" />
+        <title>{t('doctors.title')} - {t('header.hospitalName')}</title>
+        <meta name="description" content={t('doctors.pageSubtitle')} />
       </Helmet>
 
-      <div className="py-12 bg-gray-50">
+      <div className="pt-32 pb-12">
         <div className="container mx-auto px-4">
           <SectionTitle
-            title="فريقنا الطبي"
-            subtitle="نخبة من الأطباء المتخصصين ذوي الخبرة العالية"
+            title={t('doctors.title')}
+            subtitle={t('doctors.pageSubtitle')}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {doctors.map((doctor, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="aspect-w-3 aspect-h-4 bg-gray-200">
-                  {/* Image placeholder */}
-                  <div className="w-full h-64 bg-gray-300"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{doctor.name}</h3>
-                  <p className="text-blue-600 font-semibold mb-4">{doctor.specialty}</p>
-                  <div className="space-y-2 text-gray-600 mb-6">
-                    <p>{doctor.education}</p>
-                    <p>{doctor.experience}</p>
+          {isLoading ? (
+            <div className="flex justify-center items-center min-h-[400px]">
+              <LoadingSpinner />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+              {doctors.map((doctor, index) => (
+                <div 
+                  key={index} 
+                  className="bg-white rounded-xl shadow-lg overflow-hidden"
+                >
+                  <div className="p-6">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 font-arabic">
+                        {doctor.name}
+                      </h3>
+                      <p className="text-blue-600 mb-4 font-arabic">
+                        {doctor.specialty}
+                      </p>
+                      <div className="space-y-2 mb-6">
+                        {doctor.qualifications.map((qualification, idx) => (
+                          <p key={idx} className="text-sm text-gray-600 font-arabic">
+                            {qualification}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                    <Button
+                      variant="primary"
+                      onClick={() => navigate('/appointments')}
+                      className="w-full"
+                    >
+                      {t('doctors.bookAppointment')}
+                    </Button>
                   </div>
-                  <Button
-                    variant="primary"
-                    className="w-full"
-                    onClick={() => {}}
-                  >
-                    <FaCalendar className="mr-2" />
-                    حجز موعد
-                  </Button>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Join Our Team Section */}
-          <div className="mt-16 bg-blue-600 text-white rounded-lg p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">انضم إلى فريقنا الطبي</h3>
-            <p className="mb-6">
-              نحن دائماً نبحث عن المواهب الطبية المتميزة للانضمام إلى فريقنا
-            </p>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-blue-600"
-              onClick={() => {}}
-            >
-              تقدم للوظائف
-            </Button>
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

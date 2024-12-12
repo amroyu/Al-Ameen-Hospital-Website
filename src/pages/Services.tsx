@@ -28,7 +28,6 @@ const Services: React.FC = () => {
   };
 
   const mainDepartments = getTranslatedList('departments.list');
-  const contactMethods = getTranslatedList('contact.appointment.methods');
 
   const medicalServices: ServiceItem[] = [
     {
@@ -76,7 +75,7 @@ const Services: React.FC = () => {
       </Helmet>
 
       {/* Main Departments Section */}
-      <section className="py-12 bg-white">
+      <section className="pt-32 pb-12 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             {t('departments.title')}
@@ -96,7 +95,7 @@ const Services: React.FC = () => {
               ))
             ) : (
               <div className="col-span-3 text-center text-gray-500">
-                {t('departments.title')}
+                {t('departments.noData')}
               </div>
             )}
           </div>
@@ -130,45 +129,10 @@ const Services: React.FC = () => {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-center text-gray-500">No services available</p>
+                  <p className="text-center text-gray-500">{t('services.noData')}</p>
                 )}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Information */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            {t('contact.title')}
-          </h2>
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-gray-50 rounded-lg p-6 space-y-4">
-              <p className="flex items-center justify-center space-x-2 rtl:space-x-reverse">
-                <span className="font-semibold">{t('contact.workingHours')}:</span>
-                <span>{t('contact.phone')}</span>
-              </p>
-              <p className="text-center text-gray-600">
-                {t('contact.nationality')}
-              </p>
-              <div className="pt-4">
-                <h3 className="font-semibold text-lg mb-3">{t('contact.appointment.title')}:</h3>
-                <ul className="space-y-2">
-                  {contactMethods && contactMethods.length > 0 ? (
-                    contactMethods.map((method: string, index: number) => (
-                      <li key={index} className="flex items-center space-x-2 rtl:space-x-reverse">
-                        <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
-                        <span>{method}</span>
-                      </li>
-                    ))
-                  ) : (
-                    <li className="text-center text-gray-500">No contact methods available</li>
-                  )}
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </section>

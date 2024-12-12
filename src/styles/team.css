@@ -1,22 +1,22 @@
 /* Medical Team Page Styles */
 .team-section {
-  @apply py-16 px-4 md:px-8 max-w-7xl mx-auto;
+  @apply py-16 px-4;
 }
 
 .team-title {
-  @apply text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800;
+  @apply text-4xl font-bold text-center text-blue-900 mb-4 font-arabic;
 }
 
 .team-subtitle {
-  @apply text-lg text-center mb-12 text-gray-600 max-w-2xl mx-auto;
+  @apply text-xl text-gray-600 text-center mb-12 font-arabic;
 }
 
 .team-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto;
 }
 
 .doctor-card {
-  @apply bg-white rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:-translate-y-2;
+  @apply bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105;
 }
 
 .doctor-image {
@@ -24,29 +24,35 @@
 }
 
 .doctor-info {
-  @apply p-6;
+  @apply p-6 space-y-4;
 }
 
 .doctor-name {
-  @apply text-xl font-bold mb-2 text-gray-800;
+  @apply text-xl font-bold text-blue-900 font-arabic;
 }
 
 .doctor-specialty {
-  @apply text-primary-600 font-medium mb-3;
+  @apply text-lg text-blue-600 font-arabic;
 }
 
-.doctor-education {
-  @apply text-sm text-gray-600 mb-2;
+.doctor-qualifications {
+  @apply space-y-2 mt-2;
+}
+
+.qualification {
+  @apply text-sm text-gray-600 font-arabic;
 }
 
 .doctor-experience {
-  @apply text-sm text-gray-600 mb-4;
+  @apply text-sm text-gray-700 font-arabic;
+}
+
+.doctor-languages {
+  @apply text-sm text-gray-700 font-arabic;
 }
 
 .book-appointment-btn {
-  @apply w-full bg-primary-600 text-white py-3 px-4 rounded-lg font-medium 
-         hover:bg-primary-700 transition-colors duration-200 
-         flex items-center justify-center gap-2;
+  @apply mt-4 w-full bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-300 font-arabic;
 }
 
 .join-section {
@@ -104,4 +110,13 @@
   .hours-grid {
     @apply grid-cols-1 gap-6;
   }
+}
+
+/* RTL Support */
+[dir="rtl"] .doctor-info {
+  @apply text-right;
+}
+
+[dir="rtl"] .book-appointment-btn {
+  @apply rtl:flex rtl:flex-row-reverse rtl:justify-center rtl:items-center rtl:gap-2;
 }

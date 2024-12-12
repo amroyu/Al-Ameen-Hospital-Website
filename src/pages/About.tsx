@@ -10,51 +10,38 @@ const About = () => {
     {
       icon: <FaHospital className="w-12 h-12 text-blue-600" />,
       number: "1399",
-      label: "تأسست عام",
-      suffix: "هـ"
+      label: t('about.stats.established.label'),
+      suffix: t('about.stats.established.suffix')
     },
     {
       icon: <FaUserMd className="w-12 h-12 text-blue-600" />,
-      number: "100+",
-      label: "طبيب متخصص"
+      number: t('about.stats.doctors.number'),
+      label: t('about.stats.doctors.label')
     },
     {
       icon: <FaAward className="w-12 h-12 text-blue-600" />,
-      number: "24",
-      label: "قسم طبي"
+      number: t('about.stats.departments.number'),
+      label: t('about.stats.departments.label')
     }
   ];
 
-  const departments = [
-    "قسم العظام ومعالجة الكسور",
-    "قسم الجراحة العامة",
-    "قسم المختبر",
-    "قسم أمراض الأذن والأنف والحنجرة",
-    "قسم عمليات الجراحة القلبية",
-    "قسم أمراض الأوعية الدموية",
-    "قسم النسائية والتوليد",
-    "قسم أمراض الدم",
-    "قسم أمراض الغدد الصماء",
-    "قسم الهضمية",
-    "قسم العناية بالأطفال حديثي الولادة",
-    "قسم طب الأطفال"
-  ];
+  // Using type assertion to handle the array return type
+  const departmentsList = (t('about.departments.list', { returnObjects: true }) as string[]);
 
   return (
     <>
       <Helmet>
-        <title>عن المستشفى - مستشفى الأمين العام</title>
-        <meta name="description" content="نبذة عن مستشفى الأمين العام وأقسامه وخدماته" />
+        <title>{t('about.pageTitle')}</title>
+        <meta name="description" content={t('about.metaDescription')} />
       </Helmet>
 
-      <div className="py-12 bg-gray-50">
+      <div className="pt-32 pb-12 bg-gray-50">
         <div className="container mx-auto px-4">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-6">عن مستشفى الأمين العام</h1>
+            <h1 className="text-4xl font-bold mb-6">{t('about.title')}</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              تم تأسيس مستشفى الأمين العام سنة 1399 للهجرة تحت إشراف آل الأمين في المملكة العربية السعودية،
-              حيث يقدم كافة الخدمات الصحية والطبية بإشراف أفضل الكوادر الطبية المؤهلة.
+              {t('about.description')}
             </p>
           </div>
 
@@ -74,9 +61,9 @@ const About = () => {
 
           {/* Departments Section */}
           <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-6 text-center">الأقسام الرئيسية</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">{t('about.departments.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {departments.map((dept, index) => (
+              {Array.isArray(departmentsList) && departmentsList.map((dept: string, index: number) => (
                 <div key={index} className="flex items-center p-4 bg-gray-50 rounded">
                   <div className="w-3 h-3 bg-blue-600 rounded-full mr-3"></div>
                   <span>{dept}</span>
