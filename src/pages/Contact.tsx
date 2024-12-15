@@ -191,9 +191,10 @@ const Contact: React.FC = () => {
                     name="phone"
                     value={form.phone}
                     onChange={handleChange}
-                    className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                    className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-right"
                     required
                     placeholder={t('contact.phonePlaceholder')}
+                    dir="rtl"
                     disabled={isSubmitting}
                   />
                 </div>

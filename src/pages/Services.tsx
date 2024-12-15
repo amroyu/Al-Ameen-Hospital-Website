@@ -1,11 +1,14 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
 import { 
   FaEye, FaPaintBrush, FaBaby, 
   FaHeadSideVirus, FaStethoscope, FaTooth,
   FaHeartbeat
 } from 'react-icons/fa';
+import PatternStethoscope from '../assets/patterns/PatternStethoscope';
+import PatternHeartbeat from '../assets/patterns/PatternHeartbeat';
 
 interface ServiceItem {
   icon: React.ReactNode;
@@ -16,7 +19,6 @@ interface ServiceItem {
 const Services: React.FC = () => {
   const { t } = useTranslation();
 
-  // Add error handling and type checking for translations
   const getTranslatedList = (key: string): string[] => {
     try {
       const list = t(key, { returnObjects: true });
@@ -67,73 +69,140 @@ const Services: React.FC = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Helmet>
         <title>{t('services.title')} | {t('header.hospitalName')}</title>
         <meta name="description" content={t('services.sectionDescription')} />
       </Helmet>
 
-      {/* Main Departments Section */}
-      <section className="pt-32 pb-12 bg-white">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-10">
+          <PatternStethoscope className="absolute top-0 right-0 w-96 h-96 text-primary-200 transform rotate-90" />
+          <PatternHeartbeat className="absolute bottom-0 left-0 w-96 h-96 text-primary-200 transform -rotate-90" />
+        </div>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
-            {t('departments.title')}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              {t('services.title')}
+            </h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              {t('services.sectionDescription')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Departments Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              {t('departments.title')}
+            </h2>
+            <div className="w-20 h-1 bg-primary-600 mx-auto"></div>
+          </motion.div>
+          
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {mainDepartments && mainDepartments.length > 0 ? (
               mainDepartments.map((department: string, index: number) => (
-                <div 
+                <motion.div
                   key={index}
-                  className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow duration-300"
+                  variants={itemVariants}
+                  className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100"
                 >
                   <div className="flex items-center space-x-4 rtl:space-x-reverse">
-                    <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
-                    <h3 className="text-lg font-semibold">{department}</h3>
+                    <div className="w-3 h-3 bg-primary-600 rounded-full"></div>
+                    <h3 className="text-xl font-semibold text-gray-900">{department}</h3>
                   </div>
-                </div>
+                </motion.div>
               ))
             ) : (
               <div className="col-span-3 text-center text-gray-500">
                 {t('departments.noData')}
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Medical Services Section */}
-      <section className="py-12">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            {t('services.title')}
-          </h2>
-          
-          <div className="space-y-12">
-            {medicalServices.map((service: ServiceItem, index: number) => (
-              <div 
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              {t('services.medicalServices')}
+            </h2>
+            <div className="w-20 h-1 bg-primary-600 mx-auto"></div>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {medicalServices.map((service, index) => (
+              <motion.div
                 key={index}
-                className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+                variants={itemVariants}
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 border border-gray-100"
               >
-                <div className="flex items-center space-x-4 rtl:space-x-reverse mb-6">
-                  {service.icon}
-                  <h3 className="text-2xl font-bold">{service.title}</h3>
-                </div>
-                {service.services && service.services.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {service.services.map((item: string, idx: number) => (
-                      <div key={idx} className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <div className="w-2 h-2 bg-primary-600 rounded-full"></div>
-                        <span className="text-gray-700">{item}</span>
-                      </div>
-                    ))}
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-6 p-4 bg-primary-50 rounded-full">
+                    {service.icon}
                   </div>
-                ) : (
-                  <p className="text-center text-gray-500">{t('services.noData')}</p>
-                )}
-              </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    {service.title}
+                  </h3>
+                  <ul className="space-y-2">
+                    {service.services.map((item, idx) => (
+                      <li key={idx} className="text-gray-600">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

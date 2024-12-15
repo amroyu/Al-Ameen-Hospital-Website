@@ -4,7 +4,8 @@ import { Helmet } from 'react-helmet';
 import { FaHospital, FaUserMd, FaAward } from 'react-icons/fa';
 
 const About = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
   const stats = [
     {
@@ -60,13 +61,13 @@ const About = () => {
           </div>
 
           {/* Departments Section */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
+          <div className="bg-white rounded-lg shadow-lg p-8" dir={isRTL ? 'rtl' : 'ltr'}>
             <h2 className="text-2xl font-bold mb-6 text-center">{t('about.departments.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {Array.isArray(departmentsList) && departmentsList.map((dept: string, index: number) => (
                 <div key={index} className="flex items-center p-4 bg-gray-50 rounded">
-                  <div className="w-3 h-3 bg-blue-600 rounded-full mr-3"></div>
-                  <span>{dept}</span>
+                  <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0 mx-3"></div>
+                  <span className="flex-1">{dept}</span>
                 </div>
               ))}
             </div>

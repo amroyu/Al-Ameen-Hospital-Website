@@ -7,47 +7,119 @@
     "doctors": "Doctors",
     "appointments": "Appointments",
     "contact": "Contact",
-    "bookAppointment": "Book Appointment"
+    "bookAppointment": "Book Appointment",
+    "announcements": "Announcements"
   },
   "services": {
     "title": "Our Medical Services",
-    "sectionTitle": "Our Medical Departments",
-    "sectionDescription": "We provide comprehensive, high-quality medical services across various specialties",
-    "departments": {
-      "orthopedics": "Orthopedics & Fractures",
-      "orthopedicsDescription": "Specialized care for bone, joint, and muscle conditions",
-      "generalSurgery": "General Surgery",
-      "generalSurgeryDescription": "Comprehensive surgical procedures and treatments",
-      "ent": "Ear, Nose & Throat",
-      "entDescription": "Expert care for ear, nose, and throat conditions",
-      "obgyn": "Obstetrics & Gynecology",
-      "obgynDescription": "Complete women's health and maternity care",
-      "digestive": "Digestive System",
-      "digestiveDescription": "Treatment of digestive system disorders",
-      "urology": "Urology",
-      "urologyDescription": "Specialized care for urinary tract and male reproductive system",
-      "respiratory": "Respiratory System",
-      "respiratoryDescription": "Treatment of respiratory and lung conditions",
-      "neurology": "Neurology",
-      "neurologyDescription": "Expert care for neurological disorders",
-      "ophthalmology": "Ophthalmology",
-      "ophthalmologyDescription": "Comprehensive eye care services",
-      "pediatrics": "Pediatrics",
-      "pediatricsDescription": "Specialized healthcare for children",
-      "cardiology": "Cardiology",
-      "cardiologyDescription": "Advanced heart and cardiovascular care",
-      "dental": "Dental Care",
-      "dentalDescription": "Complete dental and oral health services",
-      "rheumatology": "Rheumatology",
-      "dermatology": "Dermatology",
-      "medicalConsultations": "Medical Consultations",
-      "psychology": "Psychology",
-      "bloodDiseases": "Blood Diseases",
-      "kidneyDiseases": "Kidney Diseases",
-      "plasticSurgery": "Plastic Surgery",
-      "internalMedicine": "Internal Medicine"
+    "searchPlaceholder": "Search for departments or services...",
+    "noResults": "No services found matching your search.",
+    "sectionTitle": "Our Medical Services",
+    "sectionDescription": "Comprehensive healthcare services delivered with expertise and compassion",
+    "categories": {
+      "specialty": "Specialty Departments",
+      "diagnostic": "Diagnostic Services",
+      "emergency": "Emergency Care",
+      "support": "Support Services"
     },
-    "noServices": "Coming Soon"
+    "learnMore": "Learn More",
+    "ophthalmology": {
+      "title": "Ophthalmology Department",
+      "description": "Specialized eye care and treatment services",
+      "services": [
+        "Cataract Treatment",
+        "Laser Vision Correction",
+        "Glaucoma Treatment",
+        "Retinal Disease Treatment",
+        "Comprehensive Eye Examinations",
+        "Strabismus Treatment"
+      ]
+    },
+    "plastic": {
+      "title": "Plastic Surgery",
+      "description": "Advanced cosmetic and reconstructive procedures",
+      "services": [
+        "Rhinoplasty",
+        "Face and Neck Lift",
+        "Blepharoplasty",
+        "Body Contouring",
+        "Botox and Filler Injections",
+        "Burn and Scar Reconstruction"
+      ]
+    },
+    "pediatricICU": {
+      "title": "Pediatric ICU",
+      "description": "Specialized intensive care for children",
+      "services": [
+        "Neonatal Care",
+        "Critical Care Management",
+        "Cardiorespiratory Monitoring",
+        "Respiratory Therapy",
+        "Post-operative Care",
+        "Severe Infection Treatment"
+      ]
+    },
+    "ent": {
+      "title": "ENT Department",
+      "description": "Ear, nose, and throat specialists",
+      "services": [
+        "Tonsillitis Treatment",
+        "Sinus Treatment",
+        "Hearing Problems Treatment",
+        "Rhinoplasty Surgery",
+        "Swallowing Disorders Treatment",
+        "Vertigo Treatment"
+      ]
+    },
+    "urology": {
+      "title": "Urology Department",
+      "description": "Comprehensive urological care",
+      "services": [
+        "Kidney Stone Treatment",
+        "Prostate Treatment",
+        "Urological Surgery",
+        "Incontinence Treatment",
+        "Male Infertility Treatment",
+        "Prostate Examinations"
+      ]
+    },
+    "dental": {
+      "title": "Dental Department",
+      "description": "Comprehensive dental services",
+      "services": [
+        "Teeth Cleaning and Whitening",
+        "Orthodontics",
+        "Dental Implants",
+        "Root Canal Treatment",
+        "Pediatric Dentistry",
+        "Fixed and Removable Prosthetics"
+      ]
+    },
+    "cardiology": {
+      "title": "Cardiology Department",
+      "description": "Cardiovascular care and treatment",
+      "services": [
+        "ECG Testing",
+        "Cardiac Catheterization",
+        "Hypertension Treatment",
+        "Coronary Artery Examination",
+        "Cardiac Arrhythmia Treatment",
+        "Regular Heart Check-ups"
+      ]
+    },
+    "neurology": {
+      "title": "Neurology Department",
+      "description": "Expert care for neurological disorders"
+    },
+    "orthopedics": {
+      "title": "Orthopedics Department",
+      "description": "Specialized care for bone and joint conditions"
+    },
+    "pediatrics": {
+      "title": "Pediatrics Department",
+      "description": "Comprehensive healthcare for children"
+    },
+    "noServicesAvailable": "No services available"
   },
   "contact": {
     "title": "Contact Us",
@@ -76,10 +148,12 @@
     "hotlineNumber": "+966 12 736 6500",
     "bookAppointment": "Book Appointment",
     "visitHospital": "Visit Hospital Directly",
-    "workingHours": "Working Hours",
-    "workingDays": "Weekdays",
-    "workingTime": "8:00 AM - 10:00 PM",
-    "emergencyService": "24/7 Emergency Service",
+    "workingHours": {
+      "title": "Working Hours",
+      "weekdays": "Sunday - Thursday",
+      "weekend": "Friday - Saturday",
+      "emergency": "24/7 Emergency Services Available"
+    },
     "quickLinks": "Quick Links",
     "location": "Location",
     "directions": "Directions",
@@ -114,15 +188,46 @@
       "Nephrology",
       "Medical Consultations",
       "Psychiatry"
-    ]
+    ],
+    "cardiology": "Cardiology",
+    "orthopedics": "Orthopedics",
+    "pediatrics": "Pediatrics",
+    "neurology": "Neurology",
+    "dermatology": "Dermatology",
+    "ophthalmology": "Ophthalmology",
+    "dentistry": "Dentistry",
+    "gynecology": "Gynecology",
+    "urology": "Urology",
+    "ent": "ENT (Ear, Nose, and Throat)",
+    "psychiatry": "Psychiatry",
+    "physiotherapy": "Physiotherapy",
+    "radiology": "Radiology",
+    "laboratory": "Laboratory Services",
+    "emergency": "Emergency Medicine"
   },
   "home": {
+    "pageTitle": "Al-Ameen Hospital | Comprehensive Healthcare in Taif",
     "emergency": {
       "title": "24/7 Emergency Services",
       "description": "Our emergency department is available 24/7 with experienced medical staff ready to provide immediate care"
     },
     "whyChooseUs": {
-      "title": "Why Choose Al-Ameen Hospital"
+      "title": "Why Choose Al-Ameen Hospital",
+      "subtitle": "Experience excellence in healthcare with our world-class facilities and dedicated team",
+      "benefits": {
+        "trusted": {
+          "title": "Trusted by Thousands",
+          "description": "Over 20 years of excellence in healthcare, serving more than 100,000 patients with dedication and care"
+        },
+        "equipment": {
+          "title": "Modern Equipment",
+          "description": "State-of-the-art medical facilities and advanced diagnostic equipment for precise treatment"
+        },
+        "experts": {
+          "title": "Expert Doctors",
+          "description": "Team of highly qualified and experienced medical professionals dedicated to your well-being"
+        }
+      }
     }
   },
   "hero": {
@@ -147,19 +252,21 @@
   },
   "footer": {
     "contact": "Contact Information",
-    "address": "5889 Abu Bakr Al-Siddiq - Al-Salamah - Taif 26511",
+    "address": "5899 Abu Bakr Al-Siddiq - Al-Salamah - Taif 26511",
     "quickLinks": "Quick Links",
-    "appointments": "Appointments",
-    "emergency": "Emergency",
-    "careers": "Careers",
-    "privacy": "Privacy Policy",
-    "workingHours": "Working Hours",
-    "weekdays": "Weekdays",
-    "weekdaysTiming": "8:00 AM - 10:00 PM",
-    "weekends": "Weekends",
-    "weekendsTiming": "9:00 AM - 8:00 PM",
-    "emergency24": "Emergency service available 24/7",
-    "rights": "All Rights Reserved"
+    "services": "Our Services",
+    "doctors": "Our Doctors",
+    "appointments": "Book Appointment",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "followUs": "Follow Us",
+    "workingHours": {
+      "title": "Working Hours",
+      "weekdays": "Sunday - Thursday",
+      "weekend": "Friday - Saturday",
+      "emergency": "24/7 Emergency Services Available"
+    },
+    "copyright": "All rights reserved."
   },
   "about": {
     "title": "About Al-Ameen General Hospital",
@@ -200,16 +307,20 @@
   },
   "appointments": {
     "title": "Book an Appointment",
-    "subtitle": "Schedule your visit with our medical specialists",
-    "fullName": "Full Name",
-    "fullNamePlaceholder": "Enter your full name",
+    "submit": "Submit Appointment",
     "phoneNumber": "Phone Number",
     "phonePlaceholder": "Enter your phone number",
+    "validation": {
+      "required": "Please fill out this field."
+    },
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Enter your full name",
     "email": "Email Address",
     "emailPlaceholder": "Enter your email address",
     "department": "Department",
     "selectDepartment": "Select department",
     "preferredDate": "Preferred Date",
+    "datePlaceholder": "dd.mm.yyyy",
     "preferredTime": "Preferred Time",
     "notes": "Additional Notes",
     "notesPlaceholder": "Any specific requirements or concerns",
@@ -223,8 +334,21 @@
   },
   "doctors": {
     "title": "Our Medical Team",
+    "pageTitle": "Our Medical Team",
     "pageSubtitle": "Expert healthcare professionals dedicated to your well-being",
     "bookAppointment": "Book Appointment",
+    "specialties": {
+      "cardiology": "Cardiology",
+      "pediatrics": "Pediatrics",
+      "orthopedics": "Orthopedics",
+      "ophthalmology": "Ophthalmology",
+      "neurology": "Neurology"
+    },
+    "qualifications": {
+      "md": "MD in",
+      "fellowship": "Fellowship in",
+      "specialization": "Specialization in"
+    },
     "team": [
       {
         "name": "Dr. Khalid Al-Harbi",
@@ -267,5 +391,72 @@
         ]
       }
     ]
+  },
+  "emergency": {
+    "title": "24/7 Emergency Services",
+    "description": "Our emergency department is equipped to handle all medical emergencies with state-of-the-art facilities and experienced medical professionals.",
+    "phone": "920012345",
+    "features": {
+      "response": {
+        "title": "Rapid Response",
+        "description": "Immediate medical attention with quick response times"
+      },
+      "specialists": {
+        "title": "Expert Specialists",
+        "description": "Highly qualified emergency care specialists available 24/7"
+      },
+      "equipment": {
+        "title": "Advanced Equipment",
+        "description": "Latest medical technology for emergency treatments"
+      }
+    }
+  },
+  "appointment": {
+    "steps": {
+      "personal": "Personal Info",
+      "contact": "Contact",
+      "datetime": "Date & Time",
+      "department": "Department"
+    },
+    "form": {
+      "name": "Full Name",
+      "phone": "Phone Number",
+      "email": "Email Address",
+      "preferredDate": "Preferred Date & Time",
+      "department": "Department",
+      "selectDepartment": "Select Department",
+      "notes": "Additional Notes"
+    },
+    "success": {
+      "title": "Appointment Scheduled!",
+      "message": "We have received your appointment request. Our team will contact you shortly to confirm your appointment."
+    }
+  },
+  "common": {
+    "previous": "Previous",
+    "next": "Next",
+    "submit": "Submit",
+    "close": "Close",
+    "readMore": "Read More"
+  },
+  "announcements": {
+    "pageTitle": "Hospital Announcements",
+    "pageDescription": "Stay updated with the latest news and announcements from Al-Ameen Hospital",
+    "metaDescription": "Latest announcements and updates from Al-Ameen Hospital including new services, events, and important notices",
+    "announcement1": {
+      "title": "New Medical Department Opening",
+      "date": "December 15, 2023",
+      "description": "We are excited to announce the opening of our new specialized medical department equipped with state-of-the-art facilities."
+    },
+    "announcement2": {
+      "title": "Free Medical Camp",
+      "date": "December 20, 2023",
+      "description": "Join us for a free medical camp offering comprehensive health checkups and consultations with our specialists."
+    },
+    "announcement3": {
+      "title": "Holiday Schedule",
+      "date": "December 25, 2023",
+      "description": "Important information regarding our hospital's operating hours during the upcoming holiday season."
+    }
   }
 }

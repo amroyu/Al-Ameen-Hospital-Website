@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import { FaCalendar, FaUser, FaPhone, FaEnvelope, FaNotesMedical, FaClock, FaHospital, FaClipboard, FaSpinner, FaCalendarCheck, FaInfoCircle, FaCalendarTimes } from 'react-icons/fa';
-import Button from '../components/Common/Button';
-import SectionTitle from '../components/Common/SectionTitle';
+import { 
+  FaCalendar, FaUser, FaPhone, FaEnvelope, FaNotesMedical, 
+  FaClock, FaHospital, FaClipboard, FaSpinner, 
+  FaCalendarCheck, FaInfoCircle, FaCalendarTimes 
+} from 'react-icons/fa';
 
 interface AppointmentForm {
   fullName: string;
@@ -13,6 +15,15 @@ interface AppointmentForm {
   preferredDate: string;
   preferredTime: string;
   notes: string;
+}
+
+interface FormErrors {
+  fullName?: boolean;
+  phoneNumber?: boolean;
+  email?: boolean;
+  department?: boolean;
+  preferredDate?: boolean;
+  preferredTime?: boolean;
 }
 
 const Appointments: React.FC = () => {
@@ -27,22 +38,40 @@ const Appointments: React.FC = () => {
     notes: ''
   });
 
-  // Get departments from services section instead
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    
+    if (!form.fullName) newErrors.fullName = true;
+    if (!form.phoneNumber) newErrors.phoneNumber = true;
+    if (!form.email) newErrors.email = true;
+    if (!form.department) newErrors.department = true;
+    if (!form.preferredDate) newErrors.preferredDate = true;
+    if (!form.preferredTime) newErrors.preferredTime = true;
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const departmentKeys = Object.keys(t('services.departments', { returnObjects: true }));
   const departments = departmentKeys.map(key => t(`services.departments.${key}`));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', form);
-    setForm({
-      fullName: '',
-      phoneNumber: '',
-      email: '',
-      department: '',
-      preferredDate: '',
-      preferredTime: '',
-      notes: ''
-    });
+    if (validateForm()) {
+      console.log('Form submitted:', form);
+      setForm({
+        fullName: '',
+        phoneNumber: '',
+        email: '',
+        department: '',
+        preferredDate: '',
+        preferredTime: '',
+        notes: ''
+      });
+      setErrors({});
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -51,6 +80,13 @@ const Appointments: React.FC = () => {
       ...prev,
       [name]: value
     }));
+    // Clear error when user starts typing
+    if (errors[name as keyof FormErrors]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: false
+      }));
+    }
   };
 
   const getCurrentDate = () => {
@@ -61,8 +97,6 @@ const Appointments: React.FC = () => {
     return `${year}-${month}-${day}`;
   };
 
-  const isSubmitting = false;
-
   return (
     <>
       <Helmet>
@@ -70,117 +104,161 @@ const Appointments: React.FC = () => {
         <meta name="description" content={t('appointments.metaDescription')} />
       </Helmet>
 
-      <div className="pt-32 pb-12 bg-gray-50">
-        <div className="container mx-auto px-4 py-12">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-blue-900 mb-4 font-arabic">
-              {t('appointments.title')}
-            </h1>
-            <p className="text-xl text-gray-600 font-arabic">
-              {t('appointments.subtitle')}
-            </p>
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+        {/* Hero Section */}
+        <section className="relative pt-32 pb-20 overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 left-0 w-64 h-64 opacity-5">
+              <div className="w-full h-full bg-gradient-to-br from-green-500/20 to-transparent rounded-full transform -rotate-45" />
+            </div>
+            <div className="absolute bottom-0 right-0 w-64 h-64 opacity-5">
+              <div className="w-full h-full bg-gradient-to-tl from-green-500/20 to-transparent rounded-full" />
+            </div>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <form onSubmit={handleSubmit} className="space-y-8" dir={i18n.dir()}>
-                <div className="space-y-6">
-                  {/* Full Name */}
-                  <div className="form-group">
-                    <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 font-arabic rtl:justify-end rtl:flex-row-reverse">
-                      <FaUser className="text-blue-600" />
-                      {t('appointments.fullName')}
-                    </label>
-                    <input
-                      type="text"
-                      name="fullName"
-                      value={form.fullName}
-                      onChange={handleChange}
-                      placeholder={t('appointments.fullNamePlaceholder')}
-                      className={`w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 font-arabic ${i18n.dir() === 'rtl' ? 'text-right' : 'text-left'}`}
-                      required
-                    />
-                  </div>
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                {t('appointments.title')}
+              </h1>
+              <div className="w-24 h-1 bg-green-500 mx-auto mb-6"></div>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                {t('appointments.subtitle')}
+              </p>
+            </div>
 
-                  {/* Phone Number */}
-                  <div className="form-group">
-                    <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 font-arabic rtl:justify-end rtl:flex-row-reverse">
-                      <FaPhone className="text-blue-600" />
-                      {t('appointments.phoneNumber')}
-                    </label>
-                    <input
-                      type="tel"
-                      name="phoneNumber"
-                      value={form.phoneNumber}
-                      onChange={handleChange}
-                      placeholder={t('appointments.phonePlaceholder')}
-                      className={`w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 font-arabic ${i18n.dir() === 'rtl' ? 'text-right' : 'text-left'}`}
-                      required
-                    />
+            {/* Appointment Form Card */}
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 relative overflow-hidden">
+                {/* Card Background Pattern */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute inset-0">
+                    <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)]" />
                   </div>
+                </div>
 
-                  {/* Email */}
-                  <div className="form-group">
-                    <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 font-arabic rtl:justify-end rtl:flex-row-reverse">
-                      <FaEnvelope className="text-blue-600" />
-                      {t('appointments.email')}
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder={t('appointments.emailPlaceholder')}
-                      className={`w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 font-arabic ${i18n.dir() === 'rtl' ? 'text-right' : 'text-left'}`}
-                      required
-                    />
-                  </div>
-
-                  {/* Department */}
-                  <div className="form-group">
-                    <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 font-arabic rtl:justify-end rtl:flex-row-reverse">
-                      <FaHospital className="text-blue-600" />
-                      {t('appointments.department')}
-                    </label>
-                    <select
-                      name="department"
-                      value={form.department}
-                      onChange={handleChange}
-                      className={`w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white font-arabic appearance-none ${i18n.dir() === 'rtl' ? 'text-right' : 'text-left'}`}
-                      required
-                    >
-                      <option value="" className="font-arabic">{t('appointments.selectDepartment')}</option>
-                      {departments.map((dept, index) => (
-                        <option key={index} value={dept} className="font-arabic">
-                          {dept}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Date and Time Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Preferred Date */}
+                <form onSubmit={handleSubmit} className="space-y-8 relative" dir={i18n.dir()}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Full Name */}
                     <div className="form-group">
-                      <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 font-arabic rtl:justify-end rtl:flex-row-reverse">
-                        <FaCalendar className="text-blue-600" />
-                        {t('appointments.preferredDate')}
+                      <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 rtl:justify-end rtl:flex-row-reverse">
+                        <FaUser className="text-green-600" />
+                        {t('appointments.fullName')}
                       </label>
                       <input
-                        type="date"
-                        name="preferredDate"
-                        value={form.preferredDate}
+                        type="text"
+                        name="fullName"
+                        value={form.fullName}
                         onChange={handleChange}
-                        min={getCurrentDate()}
-                        className={`w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 font-arabic ${i18n.dir() === 'rtl' ? 'text-right' : 'text-left'}`}
+                        placeholder={t('appointments.fullNamePlaceholder')}
+                        className="w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300"
                         required
                       />
+                      {errors.fullName && (
+                        <p className="text-red-500 text-sm mt-1">{t('appointments.validation.required')}</p>
+                      )}
+                    </div>
+
+                    {/* Phone Number */}
+                    <div className="form-group">
+                      <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 rtl:justify-end rtl:flex-row-reverse">
+                        <FaPhone className="text-green-600" />
+                        {t('appointments.phoneNumber')}
+                      </label>
+                      <input
+                        type="tel"
+                        name="phoneNumber"
+                        value={form.phoneNumber}
+                        onChange={handleChange}
+                        placeholder={t('appointments.phonePlaceholder')}
+                        className={`w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300 ${i18n.language === 'ar' ? 'text-right' : 'text-left'}`}
+                        required
+                        dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}
+                      />
+                      {errors.phoneNumber && (
+                        <p className="text-red-500 text-sm mt-1 rtl:text-right">{t('appointments.validation.required')}</p>
+                      )}
+                    </div>
+
+                    {/* Email */}
+                    <div className="form-group">
+                      <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 rtl:justify-end rtl:flex-row-reverse">
+                        <FaEnvelope className="text-green-600" />
+                        {t('appointments.email')}
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        placeholder={t('appointments.emailPlaceholder')}
+                        className="w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300"
+                        required
+                      />
+                      {errors.email && (
+                        <p className="text-red-500 text-sm mt-1">{t('appointments.validation.required')}</p>
+                      )}
+                    </div>
+
+                    {/* Department */}
+                    <div className="form-group">
+                      <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 rtl:justify-end rtl:flex-row-reverse">
+                        <FaHospital className="text-green-600" />
+                        {t('appointments.department')}
+                      </label>
+                      <select
+                        name="department"
+                        value={form.department}
+                        onChange={handleChange}
+                        className="w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300 bg-white appearance-none"
+                        required
+                      >
+                        <option value="">{t('appointments.selectDepartment')}</option>
+                        {departments.map((dept, index) => (
+                          <option key={index} value={dept}>
+                            {dept}
+                          </option>
+                        ))}
+                      </select>
+                      {errors.department && (
+                        <p className="text-red-500 text-sm mt-1">{t('appointments.validation.required')}</p>
+                      )}
+                    </div>
+
+                    {/* Preferred Date */}
+                    <div className="form-group">
+                      <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 rtl:justify-end rtl:flex-row-reverse">
+                        <FaCalendar className="text-green-600" />
+                        {t('appointments.preferredDate')}
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          name="preferredDate"
+                          value={form.preferredDate}
+                          onChange={handleChange}
+                          placeholder={t('appointments.datePlaceholder')}
+                          className={`w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300 ${i18n.language === 'ar' ? 'text-right' : 'text-left'}`}
+                          required
+                          dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}
+                          min={getCurrentDate()}
+                          onFocus={(e) => (e.target.type = 'date')}
+                          onBlur={(e) => {
+                            if (!e.target.value) e.target.type = 'text';
+                          }}
+                        />
+                        <FaCalendar className="absolute top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none rtl:left-4 ltr:right-4" />
+                      </div>
+                      {errors.preferredDate && (
+                        <p className="text-red-500 text-sm mt-1 rtl:text-right">{t('appointments.validation.required')}</p>
+                      )}
                     </div>
 
                     {/* Preferred Time */}
                     <div className="form-group">
-                      <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 font-arabic rtl:justify-end rtl:flex-row-reverse">
-                        <FaClock className="text-blue-600" />
+                      <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 rtl:justify-end rtl:flex-row-reverse">
+                        <FaClock className="text-green-600" />
                         {t('appointments.preferredTime')}
                       </label>
                       <input
@@ -188,16 +266,19 @@ const Appointments: React.FC = () => {
                         name="preferredTime"
                         value={form.preferredTime}
                         onChange={handleChange}
-                        className={`w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 font-arabic ${i18n.dir() === 'rtl' ? 'text-right' : 'text-left'}`}
+                        className="w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300"
                         required
                       />
+                      {errors.preferredTime && (
+                        <p className="text-red-500 text-sm mt-1">{t('appointments.validation.required')}</p>
+                      )}
                     </div>
                   </div>
 
-                  {/* Additional Notes */}
+                  {/* Notes */}
                   <div className="form-group">
-                    <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 font-arabic rtl:justify-end rtl:flex-row-reverse">
-                      <FaClipboard className="text-blue-600" />
+                    <label className="flex items-center gap-3 text-gray-700 text-lg font-semibold mb-3 rtl:justify-end rtl:flex-row-reverse">
+                      <FaClipboard className="text-green-600" />
                       {t('appointments.notes')}
                     </label>
                     <textarea
@@ -205,61 +286,25 @@ const Appointments: React.FC = () => {
                       value={form.notes}
                       onChange={handleChange}
                       placeholder={t('appointments.notesPlaceholder')}
-                      className={`w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 font-arabic ${i18n.dir() === 'rtl' ? 'text-right' : 'text-left'}`}
-                      rows={4}
-                      required
+                      className="w-full px-6 py-4 rounded-xl border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-300 min-h-[120px]"
                     />
                   </div>
-                </div>
 
-                {/* Important Notes */}
-                <div className="bg-blue-50 p-6 rounded-xl space-y-3 font-arabic">
-                  <h3 className="text-lg font-bold text-blue-900 mb-4 rtl:text-right">
-                    {t('appointments.importantNotes')}
-                  </h3>
-                  <ul className="space-y-4 text-gray-600">
-                    <li className="flex items-start gap-3 rtl:justify-end rtl:flex-row-reverse">
-                      <FaInfoCircle className="text-blue-500 mt-1" />
-                      <span>{t('appointments.note1')}</span>
-                    </li>
-                    <li className="flex items-start gap-3 rtl:justify-end rtl:flex-row-reverse">
-                      <FaClock className="text-blue-500 mt-1" />
-                      <span>{t('appointments.note2')}</span>
-                    </li>
-                    <li className="flex items-start gap-3 rtl:justify-end rtl:flex-row-reverse">
-                      <FaCalendarTimes className="text-blue-500 mt-1" />
-                      <span>{t('appointments.note3')}</span>
-                    </li>
-                    <li className="flex items-start gap-3 rtl:justify-end rtl:flex-row-reverse">
-                      <FaPhone className="text-blue-500 mt-1" />
-                      <span>{t('appointments.note4')}</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="flex rtl:justify-start justify-end">
-                  <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 transition-all duration-300 flex items-center gap-3 rtl:flex-row-reverse font-arabic"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <FaSpinner className="animate-spin" />
-                        <span>{t('appointments.submitting')}</span>
-                      </>
-                    ) : (
-                      <>
-                        <FaCalendarCheck />
-                        <span>{t('appointments.submitButton')}</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </form>
+                  {/* Submit Button */}
+                  <div className="text-center">
+                    <button
+                      type="submit"
+                      className="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rtl:flex-row-reverse"
+                    >
+                      <FaCalendarCheck className="rtl:ml-2 ltr:mr-2" />
+                      {t('appointments.submit')}
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </>
   );

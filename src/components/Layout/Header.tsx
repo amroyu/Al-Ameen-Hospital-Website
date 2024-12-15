@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { FaCalendarAlt } from 'react-icons/fa';
 import logo from '../../assets/images/hospital-logo.png';
 
 const Header: React.FC = () => {
@@ -32,6 +33,7 @@ const Header: React.FC = () => {
     { path: '/', label: 'header.home' },
     { path: '/about', label: 'header.about' },
     { path: '/services', label: 'header.services' },
+    { path: '/announcements', label: 'header.announcements' },
     { path: '/doctors', label: 'header.doctors' },
     { path: '/appointments', label: 'header.appointments' },
     { path: '/contact', label: 'header.contact' },
@@ -40,7 +42,9 @@ const Header: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed w-full z-50 bg-white shadow-md">
+    <header 
+      className="fixed w-full z-50 transition-all duration-300 bg-gradient-to-r from-green-50 via-white to-green-50 shadow-sm"
+    >
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-28">
           {/* Logo - Moved to the right for Arabic */}
@@ -49,7 +53,7 @@ const Header: React.FC = () => {
               <img
                 src={logo}
                 alt="Al-Ameen Hospital"
-                className="h-24 w-auto"
+                className="h-24 w-auto transition-transform duration-300 hover:scale-105"
               />
             </Link>
           </div>
@@ -60,32 +64,33 @@ const Header: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative px-2 py-1 text-sm font-medium transition-colors duration-300 group ${
+                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 group ${
                   isActive(link.path)
-                    ? 'text-primary-600'
-                    : 'text-gray-700 hover:text-primary-600'
+                    ? 'text-green-700'
+                    : 'text-gray-700 hover:text-green-700'
                 }`}
               >
                 {t(link.label)}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary-500 transform origin-left transition-transform duration-300 ${
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform origin-left transition-transform duration-300 ${
                   isActive(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 }`}></span>
               </Link>
             ))}
           </nav>
 
-          {/* Language Toggle and Appointment Button - Moved to the left for Arabic */}
+          {/* Language Toggle and Appointment Button */}
           <div className="flex items-center space-x-4 rtl:space-x-reverse order-3 md:order-1">
             <button
               onClick={toggleLanguage}
-              className="px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300"
+              className="px-4 py-2 rounded-full text-sm font-medium bg-green-50 text-green-700 hover:bg-green-100 transition-all duration-300"
             >
               {i18n.language === 'ar' ? 'English' : 'العربية'}
             </button>
             <Link
               to="/appointments"
-              className="px-6 py-2.5 rounded-full text-sm font-medium bg-primary-500 text-white hover:bg-primary-600 hover:shadow-lg transition-all duration-300"
+              className="flex items-center px-6 py-2.5 rounded-full text-sm font-medium bg-green-600 text-white hover:bg-green-700 hover:shadow-lg transition-all duration-300 group"
             >
+              <FaCalendarAlt className="w-4 h-4 mr-2 rtl:ml-2 rtl:mr-0 group-hover:scale-110 transition-transform duration-300" />
               {t('header.bookAppointment')}
             </Link>
           </div>
@@ -124,8 +129,8 @@ const Header: React.FC = () => {
               to={link.path}
               className={`block px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-300 ${
                 isActive(link.path)
-                  ? 'bg-primary-50 text-primary-600'
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-primary-600'
+                  ? 'bg-green-50 text-green-700'
+                  : 'text-gray-700 hover:bg-gray-50 hover:text-green-700'
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -138,7 +143,7 @@ const Header: React.FC = () => {
                 toggleLanguage();
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full px-4 py-2.5 text-sm font-medium text-gray-700 rounded-lg hover:bg-gray-50"
+              className="w-full px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-300"
             >
               {i18n.language === 'ar' ? 'English' : 'العربية'}
             </button>

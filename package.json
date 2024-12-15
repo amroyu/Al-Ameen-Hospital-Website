@@ -9,6 +9,7 @@
     "autoprefixer": "^10.4.20",
     "axios": "^1.6.2",
     "cra-template": "1.2.0",
+    "framer-motion": "^11.14.1",
     "i18next": "^23.16.8",
     "postcss": "^8.4.49",
     "react": "^18.2.0",

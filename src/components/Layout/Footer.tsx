@@ -1,57 +1,180 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import {
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaClock,
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaArrowRight,
+  FaWhatsapp
+} from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-const Footer = () => {
-  const { t } = useTranslation();
+const Footer: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
+  const socialLinks = [
+    { icon: FaFacebookF, href: 'https://facebook.com', label: 'Facebook' },
+    { icon: FaTwitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: FaInstagram, href: 'https://instagram.com', label: 'Instagram' },
+    { icon: FaWhatsapp, href: 'https://whatsapp.com', label: 'WhatsApp' }
+  ];
+
+  const quickLinks = [
+    { href: '/services', label: t('footer.services') },
+    { href: '/doctors', label: t('footer.doctors') },
+    { href: '/appointments', label: t('footer.appointments') },
+    { href: '/about', label: t('footer.about') },
+    { href: '/contact', label: t('footer.contact') }
+  ];
+
+  const workingHours = [
+    { day: t('footer.workingHours.weekdays'), hours: '8:00 AM - 10:00 PM' },
+    { day: t('footer.workingHours.weekend'), hours: '9:00 AM - 8:00 PM' }
+  ];
 
   return (
-    <footer className="bg-gray-800 text-white py-8">
+    <footer className="bg-[#1a4f7c] text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Contact Information */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">{t('footer.contact')}</h3>
-            <div className="space-y-2">
-              <p className="flex items-center">
-                <FaPhone className="mr-2" />
-                <span dir="ltr">+966 127 366 100</span>
-              </p>
-              <p className="flex items-center">
-                <FaEnvelope className="mr-2" />
+          <div className={`space-y-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <h3 className="text-2xl font-bold text-white mb-6 border-b border-blue-400 pb-2 inline-block">
+              {t('footer.contact')}
+            </h3>
+            <div className="space-y-4">
+              <a href="tel:+966789345126" 
+                className="flex items-center text-blue-200 hover:text-white transition-colors group">
+                <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
+                  <FaPhone className="w-4 h-4" />
+                </div>
+                <span dir="ltr">+966 789 345 126</span>
+              </a>
+              <a href="mailto:info@alameenhospital.com" 
+                className="flex items-center text-blue-200 hover:text-white transition-colors group">
+                <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
+                  <FaEnvelope className="w-4 h-4" />
+                </div>
                 <span>info@alameenhospital.com</span>
-              </p>
-              <p className="flex items-center">
-                <FaMapMarkerAlt className="mr-2" />
+              </a>
+              <div className="flex items-start text-blue-200">
+                <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-1">
+                  <FaMapMarkerAlt className="w-4 h-4" />
+                </div>
                 <span>{t('footer.address')}</span>
-              </p>
+              </div>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">{t('footer.quickLinks')}</h3>
-            <ul className="space-y-2">
-              <li>{t('footer.appointments')}</li>
-              <li>{t('footer.emergency')}</li>
-              <li>{t('footer.careers')}</li>
-              <li>{t('footer.privacy')}</li>
+          <div className={`space-y-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <h3 className="text-2xl font-bold text-white mb-6 border-b border-blue-400 pb-2 inline-block">
+              {t('footer.quickLinks')}
+            </h3>
+            <ul className="space-y-4">
+              <li>
+                <Link to="/services" 
+                  className="flex items-center text-blue-200 hover:text-white transition-colors group">
+                  <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
+                    <FaArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                  </div>
+                  <span>{t('footer.services')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/doctors" 
+                  className="flex items-center text-blue-200 hover:text-white transition-colors group">
+                  <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
+                    <FaArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                  </div>
+                  <span>{t('footer.doctors')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" 
+                  className="flex items-center text-blue-200 hover:text-white transition-colors group">
+                  <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
+                    <FaArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                  </div>
+                  <span>{t('footer.about')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" 
+                  className="flex items-center text-blue-200 hover:text-white transition-colors group">
+                  <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
+                    <FaArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                  </div>
+                  <span>{t('footer.contact')}</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Working Hours */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">{t('footer.workingHours')}</h3>
-            <ul className="space-y-2">
-              <li>{t('footer.weekdays')}: {t('footer.weekdaysTiming')}</li>
-              <li>{t('footer.weekends')}: {t('footer.weekendsTiming')}</li>
-              <li className="text-red-400">{t('footer.emergency24')}</li>
-            </ul>
+          <div className={`space-y-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <h3 className="text-2xl font-bold text-white mb-6 border-b border-blue-400 pb-2 inline-block">
+              {t('footer.workingHours.title')}
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-start text-blue-200">
+                <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                  <FaClock className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="font-medium text-white">{t('footer.workingHours.weekdays')}</p>
+                  <p className="text-blue-200">8:00 AM - 10:00 PM</p>
+                </div>
+              </div>
+              <div className="flex items-start text-blue-200">
+                <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3">
+                  <FaClock className="w-4 h-4" />
+                </div>
+                <div>
+                  <p className="font-medium text-white">{t('footer.workingHours.weekend')}</p>
+                  <p className="text-blue-200">9:00 AM - 8:00 PM</p>
+                </div>
+              </div>
+              <div className="mt-4 bg-green-500 bg-opacity-20 p-3 rounded-lg">
+                <p className="text-green-300 font-medium">
+                  {t('footer.workingHours.emergency')}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Media */}
+          <div className={`space-y-6 ${isRTL ? 'text-right' : 'text-left'}`}>
+            <h3 className="text-2xl font-bold text-white mb-6 border-b border-blue-400 pb-2 inline-block">
+              {t('footer.followUs')}
+            </h3>
+            <div className="flex space-x-4 rtl:space-x-reverse">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center 
+                           text-blue-200 hover:bg-blue-500 hover:text-white transform hover:-translate-y-1 
+                           transition-all duration-300"
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-4 border-t border-gray-700 text-center">
-          <p> 2024 Al-Ameen Hospital. {t('footer.rights')}</p>
+        {/* Copyright */}
+        <div className="mt-16 pt-8 border-t border-blue-400 border-opacity-30 text-center">
+          <p className="text-blue-200">
+            Al-Ameen Hospital 2024 - {t('footer.copyright')}
+          </p>
         </div>
       </div>
     </footer>

@@ -16,7 +16,7 @@
         ]
       }
     ],
-    "declaration-block-trailing-semicolon": false,
-    "no-descending-specificity": false
+    "declaration-block-trailing-semicolon": "never",
+    "no-descending-specificity": null
   }
 }
