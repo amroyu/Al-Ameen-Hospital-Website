@@ -7,7 +7,7 @@
     "doctors": "Doctors",
     "appointments": "Appointments",
     "contact": "Contact",
-    "bookAppointment": "Book Appointment",
+    "bookAppointment": "Schedule a Visit",
     "announcements": "Announcements"
   },
   "services": {
@@ -146,7 +146,7 @@
     "sendButton": "Send Message",
     "hotline": "24/7 Hotline",
     "hotlineNumber": "+966 12 736 6500",
-    "bookAppointment": "Book Appointment",
+    "bookAppointment": "Schedule a Visit",
     "visitHospital": "Visit Hospital Directly",
     "workingHours": {
       "title": "Working Hours",
@@ -233,7 +233,7 @@
   "hero": {
     "title": "Al-Ameen General Hospital",
     "description": "Providing comprehensive healthcare with the highest quality standards since 1399 AH",
-    "bookAppointment": "Book Appointment",
+    "bookAppointment": "Schedule a Visit",
     "ourServices": "Our Services",
     "features": {
       "emergency": {
@@ -256,7 +256,7 @@
     "quickLinks": "Quick Links",
     "services": "Our Services",
     "doctors": "Our Doctors",
-    "appointments": "Book Appointment",
+    "appointments": "Appointments",
     "about": "About Us",
     "contact": "Contact Us",
     "followUs": "Follow Us",
@@ -334,9 +334,50 @@
   },
   "doctors": {
     "title": "Our Medical Team",
-    "pageTitle": "Our Medical Team",
-    "pageSubtitle": "Expert healthcare professionals dedicated to your well-being",
-    "bookAppointment": "Book Appointment",
+    "subtitle": "Meet our experienced and dedicated medical professionals",
+    "pageTitle": "Our Doctors",
+    "metaDescription": "Meet Al-Ameen Hospital's experienced medical team. Our doctors are committed to providing the highest quality healthcare services.",
+    "bookAppointment": "Schedule a Visit",
+    "searchPlaceholder": "Search by doctor name or title",
+    "allDepartments": "All Medical Departments",
+    "noResults": "No doctors found matching your search criteria",
+    "schedule": {
+      "days": {
+        "sunday": "Sunday",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday"
+      }
+    },
+    "ranks": {
+      "consultant": "Consultant",
+      "specialist": "Specialist",
+      "firstDeputy": "First Deputy",
+      "deputy": "Deputy",
+      "resident": "Resident"
+    },
+    "departments": {
+      "internalMedicine": "Internal Medicine",
+      "pediatrics": "Pediatrics",
+      "orthopedics": "Orthopedics",
+      "generalSurgery": "General Surgery",
+      "obstetrics": "Obstetrics & Gynecology",
+      "dental": "Dental",
+      "ent": "ENT",
+      "rheumatology": "Rheumatology",
+      "cardiology": "Cardiology",
+      "neurology": "Neurology",
+      "psychiatry": "Psychiatry",
+      "ophthalmology": "Ophthalmology",
+      "urology": "Urology",
+      "pulmonology": "Pulmonology",
+      "nephrology": "Nephrology",
+      "anesthesiology": "Anesthesiology",
+      "radiology": "Radiology"
+    },
     "specialties": {
       "cardiology": "Cardiology",
       "pediatrics": "Pediatrics",
@@ -347,8 +388,25 @@
     "qualifications": {
       "md": "MD in",
       "fellowship": "Fellowship in",
-      "specialization": "Specialization in"
+      "specialization": "Specialization in",
+      "md_cardiology": "MD in Cardiology",
+      "fellowship_interventional_cardiology": "Fellowship in Interventional Cardiology",
+      "md_pediatrics": "MD in Pediatrics",
+      "fellowship_pediatric_cardiology": "Fellowship in Pediatric Cardiology",
+      "md_orthopedic_surgery": "MD in Orthopedic Surgery",
+      "fellowship_joint_replacement": "Fellowship in Joint Replacement",
+      "md_ophthalmology": "MD in Ophthalmology",
+      "fellowship_retinal_surgery": "Fellowship in Retinal Surgery",
+      "md_neurology": "MD in Neurology",
+      "specialization_neurophysiology": "Specialization in Neurophysiology"
     },
+    "moreInformation": "More Information",
+    "about": "About",
+    "achievements": "Achievements",
+    "workingHours": "Working Hours",
+    "searchPlaceholder": "Search doctors by name or department...",
+    "filterByDepartment": "Filter by Department",
+    "allDepartments": "All Departments",
     "team": [
       {
         "name": "Dr. Khalid Al-Harbi",
@@ -437,7 +495,18 @@
     "next": "Next",
     "submit": "Submit",
     "close": "Close",
-    "readMore": "Read More"
+    "readMore": "Read More",
+    "hospitalName": "Al-Ameen Hospital",
+    "emergencyContact": "Emergency: +966 12 736 6500",
+    "bookAppointment": "Schedule a Visit"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "doctors": "Doctors",
+    "appointments": "Appointments",
+    "contact": "Contact"
   },
   "announcements": {
     "pageTitle": "Hospital Announcements",

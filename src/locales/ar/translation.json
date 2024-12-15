@@ -4,7 +4,7 @@
     "home": "الرئيسية",
     "about": "عن المستشفى",
     "services": "خدماتنا",
-    "doctors": "الأطباء",
+    "doctors": "أطباؤنا",
     "appointments": "حجز موعد",
     "contact": "اتصل بنا",
     "bookAppointment": "حجز موعد",
@@ -228,9 +228,67 @@
     "noServicesAvailable": "لا توجد خدمات متاحة"
   },
   "doctors": {
-    "title": "فريقنا الطبي",
-    "pageSubtitle": "نخبة من الأطباء المتخصصين لرعايتكم",
-    "bookAppointment": "حجز موعد",
+    "pageTitle": "فريقنا الطبي",
+    "title": "تعرف على أطبائنا المتخصصين",
+    "subtitle": "فريقنا من الأطباء المؤهلين تأهيلاً عالياً هنا لتقديم أفضل رعاية طبية",
+    "metaDescription": "تعرف على الفريق الطبي في مستشفى الأمين من الاستشاريين والمتخصصين في مختلف الأقسام",
+    "schedule": {
+      "morning": "صباحاً",
+      "evening": "مساءً",
+      "days": {
+        "saturday": "السبت",
+        "sunday": "الأحد",
+        "monday": "الإثنين",
+        "tuesday": "الثلاثاء",
+        "wednesday": "الأربعاء",
+        "thursday": "الخميس",
+        "friday": "الجمعة"
+      }
+    },
+    "ranks": {
+      "consultant": "استشاري",
+      "specialist": "أخصائي",
+      "firstDeputy": "نائب أول",
+      "deputy": "نائب",
+      "resident": "مقيم"
+    },
+    "departments": {
+      "internalMedicine": "الباطنة",
+      "pediatrics": "الأطفال",
+      "orthopedics": "العظام",
+      "generalSurgery": "الجراحة العامة",
+      "obstetrics": "النساء والولادة",
+      "dental": "الأسنان",
+      "ent": "الأنف والأذن والحنجرة",
+      "rheumatology": "الروماتيزم والمناعة",
+      "cardiology": "القلب",
+      "neurology": "المخ والأعصاب",
+      "psychiatry": "الأمراض النفسية",
+      "ophthalmology": "العيون",
+      "urology": "المسالك البولية",
+      "pulmonology": "الصدرية",
+      "nephrology": "الكلى",
+      "anesthesiology": "التخدير",
+      "radiology": "الأشعة"
+    },
+    "qualifications": {
+      "md_cardiology": "دكتوراه في طب القلب",
+      "fellowship_interventional_cardiology": "زمالة في قسطرة القلب",
+      "md_pediatrics": "دكتوراه في طب الأطفال",
+      "fellowship_pediatric_cardiology": "زمالة في أمراض القلب للأطفال",
+      "md_orthopedic_surgery": "دكتوراه في جراحة العظام",
+      "fellowship_joint_replacement": "زمالة في استبدال المفاصل",
+      "md_ophthalmology": "دكتوراه في طب العيون",
+      "fellowship_retinal_surgery": "زمالة في جراحة الشبكية",
+      "md_neurology": "دكتوراه في طب الأعصاب",
+      "specialization_neurophysiology": "تخصص في علم وظائف الأعصاب"
+    },
+    "searchPlaceholder": "ابحث عن طبيب حسب الاسم أو التخصص",
+    "allDepartments": "جميع الأقسام الطبية",
+    "moreInformation": "المزيد من المعلومات",
+    "about": "نبذة عن الطبيب",
+    "achievements": "الإنجازات",
+    "workingHours": "ساعات العمل",
     "team": [
       {
         "name": "د. خالد الحربي",
@@ -362,5 +420,8 @@
       "emergency": "خدمات الطوارئ متوفرة على مدار الساعة"
     },
     "copyright": "جميع الحقوق محفوظة"
+  },
+  "common": {
+    "bookAppointment": "حجز موعد"
   }
 }
