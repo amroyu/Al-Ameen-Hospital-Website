@@ -3,11 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
   FaHeartbeat, FaBrain, FaEye, FaTooth, FaBone, FaBaby,
-  FaStethoscope, FaCut, FaArrowRight, FaLungs,
-  FaFlask, FaUserMd, FaHospital, FaXRay,
-  FaAmbulance, FaUserNurse, FaHandHoldingMedical,
-  FaSearch
+  FaStethoscope, FaCut, FaLungs, FaVenus, FaHeadSideVirus,
+  FaHospitalUser, FaXRay, FaSearch, FaArrowRight
 } from 'react-icons/fa';
+import { GiKidneys } from 'react-icons/gi';
 
 interface Service {
   key: string;
@@ -18,52 +17,106 @@ interface Service {
 
 const services: Service[] = [
   {
-    key: 'ophthalmology',
-    icon: FaEye,
-    category: 'specialty',
-    subServices: ['cataract', 'lasik', 'glaucoma', 'retina']
-  },
-  {
-    key: 'cardiology',
-    icon: FaHeartbeat,
-    category: 'specialty',
-    subServices: ['ecg', 'angiography', 'bypass', 'pacemaker']
-  },
-  {
-    key: 'neurology',
-    icon: FaBrain,
-    category: 'specialty',
-    subServices: ['stroke', 'epilepsy', 'headache', 'spine']
-  },
-  {
-    key: 'orthopedics',
-    icon: FaBone,
-    category: 'specialty',
-    subServices: ['joint', 'spine', 'sports', 'trauma']
+    key: 'internal-medicine',
+    icon: FaStethoscope,
+    subServices: ['general-checkup', 'chronic-diseases', 'preventive-care'],
+    category: 'specialty'
   },
   {
     key: 'pediatrics',
     icon: FaBaby,
-    category: 'specialty',
-    subServices: ['newborn', 'vaccination', 'development', 'pediatricICU']
+    subServices: ['newborn-care', 'vaccinations', 'child-development'],
+    category: 'specialty'
+  },
+  {
+    key: 'orthopedics',
+    icon: FaBone,
+    subServices: ['joint-surgery', 'spine-treatment', 'sports-medicine'],
+    category: 'specialty'
+  },
+  {
+    key: 'general-surgery',
+    icon: FaCut,
+    subServices: ['laparoscopic-surgery', 'hernia-repair', 'appendectomy'],
+    category: 'specialty'
+  },
+  {
+    key: 'obstetrics-gynecology',
+    icon: FaVenus,
+    subServices: ['prenatal-care', 'delivery', 'gynecological-surgery'],
+    category: 'specialty'
   },
   {
     key: 'dental',
     icon: FaTooth,
-    category: 'specialty',
-    subServices: ['implant', 'orthodontics', 'surgery', 'cosmetic']
+    subServices: ['dental-surgery', 'orthodontics', 'periodontics'],
+    category: 'specialty'
   },
   {
-    key: 'diagnostics',
-    icon: FaFlask,
-    category: 'diagnostic',
-    subServices: ['laboratory', 'imaging', 'pathology', 'endoscopy']
+    key: 'ent',
+    icon: FaHeadSideVirus,
+    subServices: ['ear-treatment', 'sinus-surgery', 'throat-disorders'],
+    category: 'specialty'
   },
   {
-    key: 'emergency',
-    icon: FaAmbulance,
-    category: 'emergency',
-    subServices: ['trauma', 'cardiac', 'pediatric', 'stroke']
+    key: 'rheumatology',
+    icon: FaBone,
+    subServices: ['arthritis', 'autoimmune-diseases', 'joint-pain'],
+    category: 'specialty'
+  },
+  {
+    key: 'cardiology',
+    icon: FaHeartbeat,
+    subServices: ['heart-surgery', 'cardiac-catheterization', 'ecg'],
+    category: 'specialty'
+  },
+  {
+    key: 'neurology',
+    icon: FaBrain,
+    subServices: ['stroke-treatment', 'epilepsy', 'headache-clinic'],
+    category: 'specialty'
+  },
+  {
+    key: 'psychiatry',
+    icon: FaBrain,
+    subServices: ['mental-health', 'therapy', 'counseling'],
+    category: 'specialty'
+  },
+  {
+    key: 'ophthalmology',
+    icon: FaEye,
+    subServices: ['cataract-surgery', 'glaucoma', 'retina-treatment'],
+    category: 'specialty'
+  },
+  {
+    key: 'urology',
+    icon: GiKidneys,
+    subServices: ['kidney-stones', 'prostate-treatment', 'bladder-issues'],
+    category: 'specialty'
+  },
+  {
+    key: 'pulmonology',
+    icon: FaLungs,
+    subServices: ['asthma', 'copd', 'respiratory-infections'],
+    category: 'specialty'
+  },
+  {
+    key: 'nephrology',
+    icon: GiKidneys,
+    subServices: ['kidney-disease', 'dialysis', 'transplant-care'],
+    category: 'specialty'
+  },
+  {
+    key: 'anesthesiology',
+    icon: FaHospitalUser,
+    subServices: ['surgical-anesthesia', 'pain-management', 'critical-care'],
+    category: 'support'
+  },
+  {
+    key: 'radiology',
+    icon: FaXRay,
+    subServices: ['x-ray', 'ct-scan', 'mri'],
+    category: 'diagnostic'
   }
 ];
 
@@ -91,11 +144,18 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
         <div className="p-6">
           <h3 className="text-xl font-semibold text-gray-900 mb-2">{t(`services.${service.key}.title`)}</h3>
           <p className="text-gray-600 mb-4">{t(`services.${service.key}.description`)}</p>
+          <div className="space-y-2 mb-4">
+            {service.subServices.map((subService) => (
+              <div key={subService} className="text-sm text-gray-500">
+                • {t(`services.${service.key}.subServices.${subService}`)}
+              </div>
+            ))}
+          </div>
           <Link
-            to={`/services/${service.key}`}
+            to={`/doctors?department=${service.key}`}
             className="inline-flex items-center text-green-600 hover:text-green-700 transition-colors duration-200"
           >
-            {t('common.learnMore')} <FaArrowRight className="ml-2" />
+            {t('departments.viewDoctors')} <FaArrowRight className="ml-2" />
           </Link>
         </div>
       </div>
@@ -174,7 +234,7 @@ const Services: React.FC = () => {
                          border-l-4 border-green-500 pl-4">
               {t(`services.categories.${category}`)}
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {categoryServices.map((service) => (
                 <ServiceCard key={service.key} service={service} />
               ))}

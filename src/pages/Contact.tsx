@@ -121,7 +121,7 @@ const Contact: React.FC = () => {
               {/* Map */}
               <div className="mt-10 rounded-xl overflow-hidden h-72 w-full shadow-lg transform transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3713.7273006859386!2d40.41655287606692!3d21.437893579606763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e98f6559e5c8e9%3A0x56aa572aa30dc885!2sAl-Ameen%20Hospital!5e0!3m2!1sen!2ssa!4v1702402528276!5m2!1sen!2ssa"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3713.7273006859386!2d40.4166!3d21.4379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e98f6559e5c8e9%3A0x56aa572aa30dc885!2sAl-Ameen%20Hospital!5e0!3m2!1sen!2ssa!4v1702402528276!5m2!1sen!2ssa"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

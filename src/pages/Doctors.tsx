@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { FaUserMd, FaClock, FaCalendar, FaSearch, FaFilter, FaStethoscope, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navigation/Navbar';
+import AppointmentModal from '../components/AppointmentModal';
 
 // Temporary placeholder image URL
 const placeholderImage = 'https://via.placeholder.com/300x400?text=Doctor+Image';
@@ -703,6 +704,7 @@ const DoctorCard: React.FC<{
   currentLanguage: keyof LocalizedString;
 }> = ({ doctor, currentLanguage }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -793,7 +795,7 @@ const DoctorCard: React.FC<{
               )}
             </div>
             <button
-              onClick={() => navigate(`/book-appointment/${doctorWithDummyData.id}`)}
+              onClick={() => setIsAppointmentModalOpen(true)}
               className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300 mt-auto"
             >
               {t('common.bookAppointment')}
@@ -864,6 +866,14 @@ const DoctorCard: React.FC<{
           </motion.div>
         </div>
       )}
+      
+      {/* Appointment Modal */}
+      {isAppointmentModalOpen && (
+        <AppointmentModal
+          isOpen={isAppointmentModalOpen}
+          onClose={() => setIsAppointmentModalOpen(false)}
+        />
+      )}
     </>
   );
 };
@@ -871,11 +881,20 @@ const DoctorCard: React.FC<{
 const Doctors: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const currentLanguage = i18n.language as keyof LocalizedString;
   
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedDepartment, setSelectedDepartment] = useState<string>('all');
+  const [selectedDepartment, setSelectedDepartment] = useState<string>(searchParams.get('department') || 'all');
   
+  // Update selected department when URL parameter changes
+  useEffect(() => {
+    const departmentParam = searchParams.get('department');
+    if (departmentParam) {
+      setSelectedDepartment(departmentParam);
+    }
+  }, [searchParams]);
+
   // Filter doctors based on search query and selected department
   const filteredDepartments = useMemo(() => {
     return departments.map(dept => ({

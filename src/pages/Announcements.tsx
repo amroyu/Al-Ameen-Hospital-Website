@@ -3,6 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { FaCalendarAlt, FaArrowRight } from 'react-icons/fa';
 import ImageModal from '../components/ImageModal/ImageModal';
 
+// Import images
+import announcement1 from '../assets/images/announcements/Screenshot 2024-12-12 at 20.37.43.png';
+import announcement2 from '../assets/images/announcements/Screenshot 2024-12-12 at 20.38.03.png';
+import announcement3 from '../assets/images/announcements/Screenshot 2024-12-12 at 20.38.17.png';
+import announcement4 from '../assets/images/announcements/Screenshot 2024-12-12 at 20.38.25.png';
+import announcement5 from '../assets/images/announcements/Screenshot 2024-12-12 at 20.38.32.png';
+import announcement6 from '../assets/images/announcements/Screenshot 2024-12-12 at 20.38.49.png';
+
 interface Announcement {
   id: number;
   title: string;
@@ -18,6 +26,19 @@ const AnnouncementCard: React.FC<Announcement> = ({ title, titleAr, date, image,
   const isArabic = i18n.language === 'ar';
   const [isModalOpen, setIsModalOpen] = useState(false);
   
+  // Get the correct image source
+  const getImageSource = (imageName: string) => {
+    const images: { [key: string]: string } = {
+      'Screenshot 2024-12-12 at 20.37.43.png': announcement1,
+      'Screenshot 2024-12-12 at 20.38.03.png': announcement2,
+      'Screenshot 2024-12-12 at 20.38.17.png': announcement3,
+      'Screenshot 2024-12-12 at 20.38.25.png': announcement4,
+      'Screenshot 2024-12-12 at 20.38.32.png': announcement5,
+      'Screenshot 2024-12-12 at 20.38.49.png': announcement6,
+    };
+    return images[imageName] || '';
+  };
+  
   return (
     <>
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
@@ -26,7 +47,7 @@ const AnnouncementCard: React.FC<Announcement> = ({ title, titleAr, date, image,
           onClick={() => setIsModalOpen(true)}
         >
           <img
-            src={`/images/announcements/${image}`}
+            src={getImageSource(image)}
             alt={isArabic ? titleAr || title : title}
             className="w-full h-full object-contain hover:opacity-90 transition-opacity"
           />
@@ -55,7 +76,7 @@ const AnnouncementCard: React.FC<Announcement> = ({ title, titleAr, date, image,
 
       <ImageModal
         isOpen={isModalOpen}
-        imageUrl={`/images/announcements/${image}`}
+        imageUrl={getImageSource(image)}
         altText={isArabic ? titleAr || title : title}
         onClose={() => setIsModalOpen(false)}
       />

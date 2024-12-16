@@ -12,6 +12,7 @@
   },
   "services": {
     "title": "Our Medical Services",
+    "medicalServices": "Our Medical Services",
     "searchPlaceholder": "Search for departments or services...",
     "noResults": "No services found matching your search.",
     "sectionTitle": "Our Medical Services",
@@ -22,102 +23,177 @@
       "emergency": "Emergency Care",
       "support": "Support Services"
     },
-    "learnMore": "Learn More",
-    "ophthalmology": {
-      "title": "Ophthalmology Department",
-      "description": "Specialized eye care and treatment services",
-      "services": [
-        "Cataract Treatment",
-        "Laser Vision Correction",
-        "Glaucoma Treatment",
-        "Retinal Disease Treatment",
-        "Comprehensive Eye Examinations",
-        "Strabismus Treatment"
-      ]
-    },
-    "plastic": {
-      "title": "Plastic Surgery",
-      "description": "Advanced cosmetic and reconstructive procedures",
-      "services": [
-        "Rhinoplasty",
-        "Face and Neck Lift",
-        "Blepharoplasty",
-        "Body Contouring",
-        "Botox and Filler Injections",
-        "Burn and Scar Reconstruction"
-      ]
-    },
-    "pediatricICU": {
-      "title": "Pediatric ICU",
-      "description": "Specialized intensive care for children",
-      "services": [
-        "Neonatal Care",
-        "Critical Care Management",
-        "Cardiorespiratory Monitoring",
-        "Respiratory Therapy",
-        "Post-operative Care",
-        "Severe Infection Treatment"
-      ]
-    },
-    "ent": {
-      "title": "ENT Department",
-      "description": "Ear, nose, and throat specialists",
-      "services": [
-        "Tonsillitis Treatment",
-        "Sinus Treatment",
-        "Hearing Problems Treatment",
-        "Rhinoplasty Surgery",
-        "Swallowing Disorders Treatment",
-        "Vertigo Treatment"
-      ]
-    },
-    "urology": {
-      "title": "Urology Department",
-      "description": "Comprehensive urological care",
-      "services": [
-        "Kidney Stone Treatment",
-        "Prostate Treatment",
-        "Urological Surgery",
-        "Incontinence Treatment",
-        "Male Infertility Treatment",
-        "Prostate Examinations"
-      ]
-    },
-    "dental": {
-      "title": "Dental Department",
-      "description": "Comprehensive dental services",
-      "services": [
-        "Teeth Cleaning and Whitening",
-        "Orthodontics",
-        "Dental Implants",
-        "Root Canal Treatment",
-        "Pediatric Dentistry",
-        "Fixed and Removable Prosthetics"
-      ]
-    },
-    "cardiology": {
-      "title": "Cardiology Department",
-      "description": "Cardiovascular care and treatment",
-      "services": [
-        "ECG Testing",
-        "Cardiac Catheterization",
-        "Hypertension Treatment",
-        "Coronary Artery Examination",
-        "Cardiac Arrhythmia Treatment",
-        "Regular Heart Check-ups"
-      ]
-    },
-    "neurology": {
-      "title": "Neurology Department",
-      "description": "Expert care for neurological disorders"
-    },
-    "orthopedics": {
-      "title": "Orthopedics Department",
-      "description": "Specialized care for bone and joint conditions"
+    "internal-medicine": {
+      "title": "Internal Medicine Department",
+      "description": "Comprehensive care for adult diseases and conditions",
+      "subServices": {
+        "general-checkup": "General Health Checkup",
+        "chronic-diseases": "Chronic Disease Management",
+        "preventive-care": "Preventive Healthcare"
+      }
     },
     "pediatrics": {
       "title": "Pediatrics Department",
-      "description": "Comprehensive healthcare for children"
+      "description": "Specialized healthcare for infants, children, and adolescents",
+      "subServices": {
+        "newborn-care": "Newborn Care",
+        "vaccinations": "Childhood Vaccinations",
+        "child-development": "Child Development Monitoring"
+      }
+    },
+    "orthopedics": {
+      "title": "Orthopedics Department",
+      "description": "Treatment of musculoskeletal conditions and injuries",
+      "subServices": {
+        "joint-surgery": "Joint Surgery",
+        "spine-treatment": "Spine Treatment",
+        "sports-medicine": "Sports Medicine"
+      }
+    },
+    "general-surgery": {
+      "title": "General Surgery Department",
+      "description": "Comprehensive surgical care and procedures",
+      "subServices": {
+        "laparoscopic-surgery": "Laparoscopic Surgery",
+        "hernia-repair": "Hernia Repair",
+        "appendectomy": "Appendectomy"
+      }
+    },
+    "obstetrics-gynecology": {
+      "title": "Obstetrics & Gynecology Department",
+      "description": "Complete women's healthcare services",
+      "subServices": {
+        "prenatal-care": "Prenatal Care",
+        "delivery": "Childbirth Services",
+        "gynecological-surgery": "Gynecological Surgery"
+      }
+    },
+    "dental": {
+      "title": "Dental Department",
+      "description": "Comprehensive dental care services",
+      "subServices": {
+        "dental-surgery": "Dental Surgery",
+        "orthodontics": "Orthodontics",
+        "periodontics": "Periodontics"
+      }
+    },
+    "ent": {
+      "title": "ENT Department",
+      "description": "Ear, nose, and throat specialist care",
+      "subServices": {
+        "ear-treatment": "Ear Treatment",
+        "sinus-surgery": "Sinus Surgery",
+        "throat-disorders": "Throat Disorders"
+      }
+    },
+    "rheumatology": {
+      "title": "Rheumatology Department",
+      "description": "Treatment of autoimmune and joint conditions",
+      "subServices": {
+        "arthritis": "Arthritis Treatment",
+        "autoimmune-diseases": "Autoimmune Disease Management",
+        "joint-pain": "Joint Pain Treatment"
+      }
+    },
+    "cardiology": {
+      "title": "Cardiology Department",
+      "description": "Comprehensive heart care services",
+      "subServices": {
+        "heart-surgery": "Heart Surgery",
+        "cardiac-catheterization": "Cardiac Catheterization",
+        "ecg": "ECG Testing"
+      }
+    },
+    "neurology": {
+      "title": "Neurology Department",
+      "description": "Treatment of neurological disorders",
+      "subServices": {
+        "stroke-treatment": "Stroke Treatment",
+        "epilepsy": "Epilepsy Management",
+        "headache-clinic": "Headache Clinic"
+      }
+    },
+    "psychiatry": {
+      "title": "Psychiatry Department",
+      "description": "Mental health care and support",
+      "subServices": {
+        "mental-health": "Mental Health Services",
+        "therapy": "Psychotherapy",
+        "counseling": "Counseling Services"
+      }
+    },
+    "ophthalmology": {
+      "title": "Ophthalmology Department",
+      "description": "Comprehensive eye care services",
+      "subServices": {
+        "cataract-surgery": "Cataract Surgery",
+        "glaucoma": "Glaucoma Treatment",
+        "retina-treatment": "Retina Treatment"
+      }
+    },
+    "urology": {
+      "title": "Urology Department",
+      "description": "Urological care and treatment",
+      "subServices": {
+        "kidney-stones": "Kidney Stone Treatment",
+        "prostate-treatment": "Prostate Treatment",
+        "bladder-issues": "Bladder Issues"
+      }
+    },
+    "pulmonology": {
+      "title": "Pulmonology Department",
+      "description": "Respiratory care and treatment",
+      "subServices": {
+        "asthma": "Asthma Treatment",
+        "copd": "COPD Management",
+        "respiratory-infections": "Respiratory Infections"
+      }
+    },
+    "nephrology": {
+      "title": "Nephrology Department",
+      "description": "Kidney disease treatment and management",
+      "subServices": {
+        "kidney-disease": "Kidney Disease Treatment",
+        "dialysis": "Dialysis Services",
+        "transplant-care": "Transplant Care"
+      }
+    },
+    "anesthesiology": {
+      "title": "Anesthesiology Department",
+      "description": "Surgical and pain management services",
+      "subServices": {
+        "surgical-anesthesia": "Surgical Anesthesia",
+        "pain-management": "Pain Management",
+        "critical-care": "Critical Care"
+      }
+    },
+    "radiology": {
+      "title": "Radiology Department",
+      "description": "Advanced imaging and diagnostic services",
+      "subServices": {
+        "x-ray": "X-Ray Services",
+        "ct-scan": "CT Scan",
+        "mri": "MRI Services"
+      }
+    },
+    "departments": {
+      "0": "Internal Medicine Department",
+      "1": "Pediatrics Department",
+      "2": "Orthopedics & Fractures Department",
+      "3": "General Surgery Department",
+      "4": "Obstetrics & Gynecology Department",
+      "5": "Dental Department",
+      "6": "Ear, Nose & Throat Department",
+      "7": "Rheumatology Department",
+      "8": "Cardiology Department",
+      "9": "Neurology Department",
+      "10": "Psychiatry Department",
+      "11": "Ophthalmology Department",
+      "12": "Urology Department",
+      "13": "Pulmonology Department",
+      "14": "Nephrology Department",
+      "15": "Anesthesiology Department",
+      "16": "Radiology Department"
     },
     "noServicesAvailable": "No services available"
   },
@@ -161,49 +237,96 @@
     "specialtyServices": "Specialty Services"
   },
   "departments": {
-    "title": "Main Departments",
-    "sectionTitle": "Main Departments",
+    "title": "Our Medical Departments",
+    "viewDoctors": "View Our Doctors",
+    "internal-medicine": {
+      "name": "Internal Medicine",
+      "description": "Our Internal Medicine department provides comprehensive care for adult patients, specializing in the prevention, diagnosis, and treatment of various medical conditions."
+    },
+    "pediatrics": {
+      "name": "Pediatrics",
+      "description": "Our Pediatrics department offers specialized healthcare for infants, children, and adolescents, ensuring their healthy growth and development."
+    },
+    "orthopedics": {
+      "name": "Orthopedics",
+      "description": "The Orthopedics department specializes in treating conditions affecting the musculoskeletal system, including bones, joints, ligaments, and muscles."
+    },
+    "general-surgery": {
+      "name": "General Surgery",
+      "description": "Our General Surgery department performs a wide range of surgical procedures using advanced techniques and equipment."
+    },
+    "obstetrics-gynecology": {
+      "name": "Obstetrics & Gynecology",
+      "description": "Providing comprehensive women's healthcare, from pregnancy and childbirth to gynecological treatments and procedures."
+    },
+    "dental": {
+      "name": "Dental",
+      "description": "Our Dental department offers complete oral healthcare services, from routine check-ups to advanced dental procedures."
+    },
+    "ent": {
+      "name": "ENT",
+      "description": "The ENT department specializes in diagnosing and treating conditions related to the ear, nose, throat, and related structures of the head and neck."
+    },
+    "rheumatology": {
+      "name": "Rheumatology",
+      "description": "Our Rheumatology department treats autoimmune conditions and diseases affecting joints, muscles, and soft tissues."
+    },
+    "cardiology": {
+      "name": "Cardiology",
+      "description": "The Cardiology department provides comprehensive care for heart conditions using advanced diagnostic and treatment methods."
+    },
+    "neurology": {
+      "name": "Neurology",
+      "description": "Our Neurology department specializes in disorders of the nervous system, including the brain, spinal cord, and peripheral nerves."
+    },
+    "psychiatry": {
+      "name": "Psychiatry",
+      "description": "Providing mental health care and support through various therapeutic approaches and treatments."
+    },
+    "ophthalmology": {
+      "name": "Ophthalmology",
+      "description": "Our Ophthalmology department offers comprehensive eye care services, from routine examinations to advanced surgical procedures."
+    },
+    "urology": {
+      "name": "Urology",
+      "description": "The Urology department specializes in treating conditions of the urinary tract and male reproductive system."
+    },
+    "pulmonology": {
+      "name": "Pulmonology",
+      "description": "Our Pulmonology department diagnoses and treats respiratory conditions and diseases affecting the lungs."
+    },
+    "nephrology": {
+      "name": "Nephrology",
+      "description": "Specializing in kidney diseases and disorders, providing comprehensive care including dialysis services."
+    },
+    "anesthesiology": {
+      "name": "Anesthesiology",
+      "description": "Our Anesthesiology department ensures patient comfort and safety during surgical procedures through advanced anesthetic care."
+    },
+    "radiology": {
+      "name": "Radiology",
+      "description": "The Radiology department provides advanced imaging services for accurate diagnosis and treatment planning."
+    },
     "list": [
-      "Orthopedics and Fracture Treatment",
-      "General Surgery",
-      "Laboratory",
-      "Ear, Nose and Throat",
-      "Cardiac Surgery",
-      "Vascular Diseases",
-      "Obstetrics and Gynecology",
-      "Hematology",
-      "Endocrinology",
-      "Gastroenterology",
-      "Neonatal Care",
-      "Pediatrics",
-      "Intensive Care",
-      "Rheumatology",
       "Internal Medicine",
-      "Respiratory Diseases",
-      "Ophthalmology",
+      "Pediatrics",
+      "Orthopedics",
+      "General Surgery",
+      "Obstetrics & Gynecology",
       "Dental",
+      "ENT",
+      "Rheumatology",
+      "Cardiology",
       "Neurology",
+      "Psychiatry",
+      "Ophthalmology",
       "Urology",
-      "Dermatology",
+      "Pulmonology",
       "Nephrology",
-      "Medical Consultations",
-      "Psychiatry"
+      "Anesthesiology",
+      "Radiology"
     ],
-    "cardiology": "Cardiology",
-    "orthopedics": "Orthopedics",
-    "pediatrics": "Pediatrics",
-    "neurology": "Neurology",
-    "dermatology": "Dermatology",
-    "ophthalmology": "Ophthalmology",
-    "dentistry": "Dentistry",
-    "gynecology": "Gynecology",
-    "urology": "Urology",
-    "ent": "ENT (Ear, Nose, and Throat)",
-    "psychiatry": "Psychiatry",
-    "physiotherapy": "Physiotherapy",
-    "radiology": "Radiology",
-    "laboratory": "Laboratory Services",
-    "emergency": "Emergency Medicine"
+    "noData": "No departments available"
   },
   "home": {
     "pageTitle": "Al-Ameen Hospital | Comprehensive Healthcare in Taif",
@@ -252,7 +375,7 @@
   },
   "footer": {
     "contact": "Contact Information",
-    "address": "5899 Abu Bakr Al-Siddiq - Al-Salamah - Taif 26511",
+    "address": "King Faisal Rd, Al Salamah, Taif 26511",
     "quickLinks": "Quick Links",
     "services": "Our Services",
     "doctors": "Our Doctors",
@@ -276,37 +399,43 @@
     "stats": {
       "established": {
         "label": "Established in",
-        "suffix": "AH"
+        "suffix": " AH"
       },
       "doctors": {
         "label": "Specialist Doctors",
-        "number": "100+"
+        "number": "50+"
       },
       "departments": {
         "label": "Medical Departments",
-        "number": "24"
+        "number": "17"
       }
     },
-    "departments": {
-      "title": "Main Departments",
-      "list": [
+    "mainDepartments": {
+      "title": "Our Departments",
+      "departments": [
+        "Internal Medicine Department",
+        "Pediatrics Department",
         "Orthopedics & Fractures Department",
         "General Surgery Department",
-        "Laboratory Department",
-        "Ear, Nose & Throat Department",
-        "Cardiac Surgery Department",
-        "Vascular Disease Department",
         "Obstetrics & Gynecology Department",
-        "Hematology Department",
-        "Endocrinology Department",
-        "Gastroenterology Department",
-        "Neonatal Care Department",
-        "Pediatrics Department"
+        "Dental Department",
+        "Ear, Nose & Throat Department",
+        "Rheumatology Department",
+        "Cardiology Department",
+        "Neurology Department",
+        "Psychiatry Department",
+        "Ophthalmology Department",
+        "Urology Department",
+        "Pulmonology Department",
+        "Nephrology Department",
+        "Anesthesiology Department",
+        "Radiology Department"
       ]
     }
   },
   "appointments": {
-    "title": "Book an Appointment",
+    "title": "Schedule an Appointment",
+    "subtitle": "Book your appointment with our medical specialists",
     "submit": "Submit Appointment",
     "phoneNumber": "Phone Number",
     "phonePlaceholder": "Enter your phone number",
@@ -498,7 +627,12 @@
     "readMore": "Read More",
     "hospitalName": "Al-Ameen Hospital",
     "emergencyContact": "Emergency: +966 12 736 6500",
-    "bookAppointment": "Schedule a Visit"
+    "bookAppointment": "Schedule a Visit",
+    "view": "View",
+    "doctors": "Doctors",
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "bookAppointment": "Book Appointment"
   },
   "nav": {
     "home": "Home",

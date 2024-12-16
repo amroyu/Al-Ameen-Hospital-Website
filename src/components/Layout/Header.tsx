@@ -46,14 +46,14 @@ const Header: React.FC = () => {
       className="fixed w-full z-50 transition-all duration-300 bg-gradient-to-r from-green-50 via-white to-green-50 shadow-sm"
     >
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex items-center justify-between h-28">
+        <div className="flex items-center justify-between h-20 md:h-28">
           {/* Logo - Moved to the right for Arabic */}
           <div className="flex items-center order-2 md:order-3">
             <Link to="/" className="flex items-center">
               <img
                 src={logo}
                 alt="Al-Ameen Hospital"
-                className="h-24 w-auto transition-transform duration-300 hover:scale-105"
+                className="h-16 md:h-24 w-auto transition-transform duration-300 hover:scale-105"
               />
             </Link>
           </div>
@@ -79,7 +79,7 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Language Toggle and Appointment Button */}
-          <div className="flex items-center space-x-4 rtl:space-x-reverse order-3 md:order-1">
+          <div className="hidden md:flex items-center space-x-4 rtl:space-x-reverse order-3 md:order-1">
             <button
               onClick={toggleLanguage}
               className="px-4 py-2 rounded-full text-sm font-medium bg-green-50 text-green-700 hover:bg-green-100 transition-all duration-300"
@@ -98,7 +98,7 @@ const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden focus:outline-none order-1"
+            className="md:hidden focus:outline-none order-1 p-2 -ml-2"
             aria-label="Toggle menu"
           >
             <svg
@@ -118,11 +118,37 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden transform transition-transform duration-300 ${
-          isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
-        } absolute top-full left-0 right-0 bg-white shadow-lg`}
+        className={`md:hidden fixed top-[5rem] inset-x-0 bg-white shadow-lg transition-all duration-300 ${
+          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+        style={{
+          maxHeight: 'calc(100vh - 5rem)',
+          overflowY: 'auto'
+        }}
       >
-        <div className="px-6 py-4 space-y-2">
+        <div className="px-4 py-4 space-y-2">
+          {/* Mobile Buttons */}
+          <div className="flex items-center justify-between gap-2 mb-4">
+            <button
+              onClick={() => {
+                toggleLanguage();
+                setIsMobileMenuOpen(false);
+              }}
+              className="flex-1 px-4 py-2 text-sm font-medium text-green-700 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-300"
+            >
+              {i18n.language === 'ar' ? 'English' : 'العربية'}
+            </button>
+            <Link
+              to="/appointments"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex-1 flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium bg-green-600 text-white hover:bg-green-700 transition-all duration-300"
+            >
+              <FaCalendarAlt className="w-4 h-4 mr-2 rtl:ml-2 rtl:mr-0" />
+              {t('header.bookAppointment')}
+            </Link>
+          </div>
+
+          {/* Mobile Navigation Links */}
           {navLinks.map((link) => (
             <Link
               key={link.path}
@@ -137,17 +163,6 @@ const Header: React.FC = () => {
               {t(link.label)}
             </Link>
           ))}
-          <div className="pt-2 border-t border-gray-100">
-            <button
-              onClick={() => {
-                toggleLanguage();
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-300"
-            >
-              {i18n.language === 'ar' ? 'English' : 'العربية'}
-            </button>
-          </div>
         </div>
       </div>
     </header>

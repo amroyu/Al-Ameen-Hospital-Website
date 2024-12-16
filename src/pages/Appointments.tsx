@@ -306,6 +306,14 @@ const Appointments: React.FC = () => {
           </div>
         </section>
       </div>
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+          {t('appointments.title')}
+        </h1>
+        <p className="text-gray-600 text-center mb-8">
+          {t('appointments.subtitle')}
+        </p>
+      </div>
     </>
   );
 };

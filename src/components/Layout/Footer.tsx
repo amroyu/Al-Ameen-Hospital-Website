@@ -25,11 +25,11 @@ const Footer: React.FC = () => {
   ];
 
   const quickLinks = [
-    { href: '/services', label: t('footer.services') },
     { href: '/doctors', label: t('footer.doctors') },
-    { href: '/appointments', label: t('footer.appointments') },
+    { href: '/services', label: t('footer.services') },
     { href: '/about', label: t('footer.about') },
-    { href: '/contact', label: t('footer.contact') }
+    { href: '/contact', label: t('footer.contact') },
+    { href: '/appointments', label: t('footer.appointments') }
   ];
 
   const workingHours = [
@@ -72,46 +72,28 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div className={`space-y-6 ${isRTL ? 'text-right' : 'text-left'}`}>
-            <h3 className="text-2xl font-bold text-white mb-6 border-b border-blue-400 pb-2 inline-block">
+            <h3 className={`text-2xl font-bold text-white mb-6 border-b border-blue-400 pb-2 inline-block ${isRTL ? 'text-right' : 'text-left'}`}>
               {t('footer.quickLinks')}
             </h3>
             <ul className="space-y-4">
-              <li>
-                <Link to="/services" 
-                  className="flex items-center text-blue-200 hover:text-white transition-colors group">
-                  <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
-                    <FaArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
-                  </div>
-                  <span>{t('footer.services')}</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/doctors" 
-                  className="flex items-center text-blue-200 hover:text-white transition-colors group">
-                  <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
-                    <FaArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
-                  </div>
-                  <span>{t('footer.doctors')}</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" 
-                  className="flex items-center text-blue-200 hover:text-white transition-colors group">
-                  <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
-                    <FaArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
-                  </div>
-                  <span>{t('footer.about')}</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" 
-                  className="flex items-center text-blue-200 hover:text-white transition-colors group">
-                  <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
-                    <FaArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
-                  </div>
-                  <span>{t('footer.contact')}</span>
-                </Link>
-              </li>
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <Link to={link.href} 
+                    className={`flex items-center text-blue-200 hover:text-white transition-colors group ${isRTL ? 'flex-row-reverse justify-start' : ''}`}>
+                    {!isRTL && (
+                      <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
+                        <FaArrowRight className="w-4 h-4" />
+                      </div>
+                    )}
+                    <span className="flex-grow">{t(link.label)}</span>
+                    {isRTL && (
+                      <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
+                        <FaArrowRight className="w-4 h-4 rotate-180" />
+                      </div>
+                    )}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
