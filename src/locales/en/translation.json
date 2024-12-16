@@ -7,8 +7,10 @@
     "doctors": "Doctors",
     "appointments": "Appointments",
     "contact": "Contact",
-    "bookAppointment": "Schedule a Visit",
-    "announcements": "Announcements"
+    "bookAppointment": "Book Appointment",
+    "announcements": "Announcements",
+    "hotline": "Hotline",
+    "language": "Language"
   },
   "services": {
     "title": "Our Medical Services",
@@ -331,8 +333,8 @@
   "home": {
     "pageTitle": "Al-Ameen Hospital | Comprehensive Healthcare in Taif",
     "emergency": {
-      "title": "24/7 Emergency Services",
-      "description": "Our emergency department is available 24/7 with experienced medical staff ready to provide immediate care"
+      "title": "Emergency Services",
+      "description": "24/7 Emergency Care Available"
     },
     "whyChooseUs": {
       "title": "Why Choose Al-Ameen Hospital",
@@ -340,16 +342,30 @@
       "benefits": {
         "trusted": {
           "title": "Trusted by Thousands",
-          "description": "Over 20 years of excellence in healthcare, serving more than 100,000 patients with dedication and care"
+          "description": "Over 20 years of healthcare excellence, serving more than 100,000 patients with dedication and care"
         },
         "equipment": {
           "title": "Modern Equipment",
-          "description": "State-of-the-art medical facilities and advanced diagnostic equipment for precise treatment"
+          "description": "Advanced medical facilities and diagnostic equipment for precise treatment"
         },
         "experts": {
           "title": "Expert Doctors",
-          "description": "Team of highly qualified and experienced medical professionals dedicated to your well-being"
+          "description": "Team of qualified and experienced medical specialists dedicated to your health"
         }
+      }
+    },
+    "features": {
+      "emergency": {
+        "title": "24/7 Emergency",
+        "description": "Immediate medical attention"
+      },
+      "doctors": {
+        "title": "Expert Doctors",
+        "description": "Specialized medical care"
+      },
+      "technology": {
+        "title": "Advanced Technology",
+        "description": "Modern medical facilities"
       }
     }
   },

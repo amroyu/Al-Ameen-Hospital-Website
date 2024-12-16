@@ -35,6 +35,20 @@
           "description": "فريق من المتخصصين الطبيين المؤهلين وذوي الخبرة المكرسين لصحتك"
         }
       }
+    },
+    "features": {
+      "emergency": {
+        "title": "رعاية الطوارئ",
+        "description": "خدمات طوارئ على مدار الساعة مع استجابة سريعة"
+      },
+      "doctors": {
+        "title": "أطباء متخصصون",
+        "description": "فريق طبي مؤهل عالي الخبرة"
+      },
+      "technology": {
+        "title": "تقنيات حديثة",
+        "description": "أحدث المعدات والأجهزة الطبية"
+      }
     }
   },
   "hero": {
@@ -192,26 +206,170 @@
     "noData": "لا توجد أقسام متاحة"
   },
   "services": {
-    "title": "خدماتنا",
-    "description": "نقدم خدمات رعاية صحية شاملة مع أفضل الكوادر الطبية المؤهلة.",
-    "departments": {
-      "0": "قسم الطب الباطني",
-      "1": "قسم طب الأطفال",
-      "2": "قسم العظام والكسور",
-      "3": "قسم الجراحة العامة",
-      "4": "قسم النساء والولادة",
-      "5": "قسم طب الأسنان",
-      "6": "قسم الأنف والأذن والحنجرة",
-      "7": "قسم الروماتيزم",
-      "8": "قسم القلب",
-      "9": "قسم الأعصاب",
-      "10": "قسم الطب النفسي",
-      "11": "قسم العيون",
-      "12": "قسم المسالك البولية",
-      "13": "قسم أمراض الرئة",
-      "14": "قسم الكلى",
-      "15": "قسم التخدير",
-      "16": "قسم الأشعة"
+    "title": "خدماتنا الطبية",
+    "medicalServices": "خدماتنا الطبية",
+    "searchPlaceholder": "ابحث عن الأقسام أو الخدمات...",
+    "noResults": "لا توجد خدمات تطابق بحثك.",
+    "sectionTitle": "خدماتنا الطبية",
+    "sectionDescription": "خدمات رعاية صحية شاملة مقدمة بخبرة واهتمام",
+    "categories": {
+      "specialty": "الأقسام التخصصية",
+      "diagnostic": "خدمات التشخيص",
+      "emergency": "الرعاية الطارئة",
+      "support": "الخدمات المساندة"
+    },
+    "internal-medicine": {
+      "title": "قسم الطب الباطني",
+      "description": "رعاية شاملة لأمراض وحالات البالغين",
+      "subServices": {
+        "general-checkup": "الفحص الطبي العام",
+        "chronic-diseases": "علاج الأمراض المزمنة",
+        "preventive-care": "الرعاية الوقائية"
+      }
+    },
+    "pediatrics": {
+      "title": "قسم طب الأطفال",
+      "description": "رعاية صحية متخصصة للرضع والأطفال والمراهقين",
+      "subServices": {
+        "newborn-care": "رعاية حديثي الولادة",
+        "vaccinations": "تطعيمات الأطفال",
+        "child-development": "متابعة نمو الطفل"
+      }
+    },
+    "orthopedics": {
+      "title": "قسم العظام",
+      "description": "علاج حالات الجهاز العضلي الهيكلي والإصابات",
+      "subServices": {
+        "joint-surgery": "جراحة المفاصل",
+        "spine-treatment": "علاج العمود الفقري",
+        "sports-medicine": "طب الرياضة"
+      }
+    },
+    "general-surgery": {
+      "title": "قسم الجراحة العامة",
+      "description": "رعاية جراحية شاملة وإجراءات متقدمة",
+      "subServices": {
+        "laparoscopic-surgery": "جراحة المنظار",
+        "hernia-repair": "إصلاح الفتق",
+        "appendectomy": "استئصال الزائدة الدودية"
+      }
+    },
+    "obstetrics-gynecology": {
+      "title": "قسم النساء والولادة",
+      "description": "خدمات رعاية صحية نسائية متكاملة",
+      "subServices": {
+        "prenatal-care": "رعاية الحمل",
+        "delivery": "خدمات الولادة",
+        "gynecological-surgery": "جراحة نسائية"
+      }
+    },
+    "dental": {
+      "title": "قسم طب الأسنان",
+      "description": "خدمات رعاية الأسنان الشاملة",
+      "subServices": {
+        "dental-surgery": "جراحة الأسنان",
+        "orthodontics": "تقويم الأسنان",
+        "periodontics": "علاج اللثة"
+      }
+    },
+    "ent": {
+      "title": "قسم الأنف والأذن والحنجرة",
+      "description": "رعاية متخصصة للأذن والأنف والحنجرة",
+      "subServices": {
+        "ear-treatment": "علاج الأذن",
+        "sinus-surgery": "جراحة الجيوب الأنفية",
+        "throat-disorders": "اضطرابات الحنجرة"
+      }
+    },
+    "rheumatology": {
+      "title": "قسم الروماتيزم",
+      "description": "علاج أمراض المناعة الذاتية والمفاصل",
+      "subServices": {
+        "arthritis": "علاج التهاب المفاصل",
+        "autoimmune-diseases": "علاج أمراض المناعة الذاتية",
+        "joint-pain": "علاج آلام المفاصل"
+      }
+    },
+    "cardiology": {
+      "title": "قسم القلب",
+      "description": "خدمات رعاية القلب الشاملة",
+      "subServices": {
+        "heart-surgery": "جراحة القلب",
+        "cardiac-catheterization": "قسطرة القلب",
+        "ecg": "تخطيط القلب"
+      }
+    },
+    "neurology": {
+      "title": "قسم الأعصاب",
+      "description": "علاج الاضطرابات العصبية",
+      "subServices": {
+        "stroke-treatment": "علاج السكتة الدماغية",
+        "epilepsy": "علاج الصرع",
+        "headache-clinic": "عيادة الصداع"
+      }
+    },
+    "psychiatry": {
+      "title": "قسم الطب النفسي",
+      "description": "رعاية ودعم الصحة النفسية",
+      "subServices": {
+        "mental-health": "خدمات الصحة النفسية",
+        "therapy": "العلاج النفسي",
+        "counseling": "خدمات الاستشارة"
+      }
+    },
+    "ophthalmology": {
+      "title": "قسم العيون",
+      "description": "خدمات رعاية العيون الشاملة",
+      "subServices": {
+        "cataract-surgery": "جراحة المياه البيضاء",
+        "glaucoma": "علاج المياه الزرقاء",
+        "retina-treatment": "علاج الشبكية"
+      }
+    },
+    "urology": {
+      "title": "قسم المسالك البولية",
+      "description": "رعاية وعلاج المسالك البولية",
+      "subServices": {
+        "kidney-stones": "علاج حصوات الكلى",
+        "prostate-treatment": "علاج البروستاتا",
+        "bladder-issues": "مشاكل المثانة"
+      }
+    },
+    "pulmonology": {
+      "title": "قسم أمراض الرئة",
+      "description": "رعاية وعلاج الجهاز التنفسي",
+      "subServices": {
+        "asthma": "علاج الربو",
+        "copd": "علاج الانسداد الرئوي المزمن",
+        "respiratory-infections": "التهابات الجهاز التنفسي"
+      }
+    },
+    "nephrology": {
+      "title": "قسم الكلى",
+      "description": "علاج وإدارة أمراض الكلى",
+      "subServices": {
+        "kidney-disease": "علاج أمراض الكلى",
+        "dialysis": "خدمات غسيل الكلى",
+        "transplant-care": "رعاية زراعة الكلى"
+      }
+    },
+    "anesthesiology": {
+      "title": "قسم التخدير",
+      "description": "خدمات التخدير وإدارة الألم",
+      "subServices": {
+        "surgical-anesthesia": "تخدير العمليات",
+        "pain-management": "علاج الألم",
+        "critical-care": "العناية المركزة"
+      }
+    },
+    "radiology": {
+      "title": "قسم الأشعة",
+      "description": "خدمات التصوير والتشخيص المتقدمة",
+      "subServices": {
+        "x-ray": "خدمات الأشعة السينية",
+        "ct-scan": "الأشعة المقطعية",
+        "mri": "التصوير بالرنين المغناطيسي"
+      }
     }
   },
   "doctors": {
