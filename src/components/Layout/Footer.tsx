@@ -47,12 +47,10 @@ const Footer: React.FC = () => {
               {t('footer.contact')}
             </h3>
             <div className="space-y-4">
-              <a href="tel:+966789345126" 
+              <a href="tel:+966127366100" 
                 className="flex items-center text-blue-200 hover:text-white transition-colors group">
-                <div className="w-8 h-8 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-3 group-hover:bg-blue-500 transition-all">
-                  <FaPhone className="w-4 h-4" />
-                </div>
-                <span dir="ltr">+966 789 345 126</span>
+                <FaPhone className={`w-5 h-5 ${isRTL ? 'ml-3' : 'mr-3'} text-blue-300 group-hover:text-white transition-colors`} />
+                <span>{t('contact.phoneValue')}</span>
               </a>
               <a href="mailto:info@alameenhospital.com" 
                 className="flex items-center text-blue-200 hover:text-white transition-colors group">

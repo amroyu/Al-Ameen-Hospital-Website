@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { FaUserMd, FaClock, FaCalendar, FaSearch, FaFilter, FaStethoscope, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import Navbar from '../components/Navigation/Navbar';
 import AppointmentModal from '../components/AppointmentModal';
+import PageHero from '../components/Common/PageHero';
 
 // Temporary placeholder image URL
 const placeholderImage = 'https://via.placeholder.com/300x400?text=Doctor+Image';
@@ -738,12 +738,12 @@ const DoctorCard: React.FC<{
         animate={{ opacity: 1, y: 0 }}
         className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col"
       >
-        <div className="p-6 flex flex-col flex-1">
+        <div className="p-4 flex flex-col flex-1">
           <div className="aspect-w-4 aspect-h-3 mb-6 overflow-hidden rounded-lg">
             <img
               src={doctorWithDummyData.image}
               alt={doctorWithDummyData.name[currentLanguage]}
-              className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+              className="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-300"
             />
           </div>
           <div className="flex-1 flex flex-col">
@@ -751,25 +751,15 @@ const DoctorCard: React.FC<{
               <FaStethoscope 
                 className={`text-primary-600 dark:text-primary-400 ${
                   currentLanguage === 'ar' ? 'ml-2' : 'mr-2'
-                } text-xl`} 
+                }`}
               />
-              <h3 className={`text-xl font-semibold text-gray-900 dark:text-white ${
-                currentLanguage === 'ar' ? 'ml-1' : 'mr-1'
-              }`}>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 {doctorWithDummyData.name[currentLanguage]}
               </h3>
             </div>
-            <p className="text-gray-600 dark:text-gray-300 mb-2">
+            <p className="text-gray-600 dark:text-gray-300 mb-2 text-sm">
               {doctorWithDummyData.title[currentLanguage]}
             </p>
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className={`text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 text-sm font-medium mb-4 hover:underline focus:outline-none ${
-                currentLanguage === 'ar' ? 'text-right w-full' : 'text-left'
-              }`}
-            >
-              {t('doctors.moreInformation')}
-            </button>
             <div className="flex-1">
               {doctorWithDummyData.schedules.length > 0 && (
                 <div className="mb-4">
@@ -794,12 +784,20 @@ const DoctorCard: React.FC<{
                 </div>
               )}
             </div>
-            <button
-              onClick={() => setIsAppointmentModalOpen(true)}
-              className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300 mt-auto"
-            >
-              {t('common.bookAppointment')}
-            </button>
+            <div className="mt-4 flex gap-2">
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="flex-1 px-3 py-1.5 text-xs font-medium text-primary-600 bg-primary-50 rounded-lg hover:bg-primary-100 dark:text-primary-400 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors duration-300"
+              >
+                {t('doctors.viewProfile')}
+              </button>
+              <button
+                onClick={() => setIsAppointmentModalOpen(true)}
+                className="flex-1 px-3 py-1.5 text-xs font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 transition-colors duration-300"
+              >
+                {t('doctors.bookAppointment')}
+              </button>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -916,125 +914,110 @@ const Doctors: React.FC = () => {
         <meta name="description" content={t('doctors.metaDescription')} />
       </Helmet>
 
-      <Navbar />
-
-      <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        {/* Hero Section */}
-        <div className="relative bg-gradient-to-r from-primary-600 to-primary-400 py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <div className="flex justify-center mb-8">
-                <div className="rounded-full bg-white/10 p-4">
-                  <FaUserMd className="h-12 w-12 text-white" />
+      <main className="min-h-screen">
+        <PageHero
+          title={t('doctors.title')}
+          subtitle={t('doctors.subtitle')}
+        />
+        <div className="container mx-auto px-6 py-20">
+          {/* Search and Filter Section */}
+          <div className="container mx-auto px-4 -mt-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white rounded-lg shadow p-4 hover:shadow-xl transition-shadow duration-300"
+            >
+              <div className="flex items-center gap-4">
+                {/* Department Filter */}
+                <div className="w-[260px]">
+                  <div className="relative">
+                    <FaFilter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" />
+                    <select
+                      value={selectedDepartment}
+                      onChange={(e) => setSelectedDepartment(e.target.value)}
+                      className={`w-full h-11 pl-10 pr-8 rounded-lg border border-gray-200 bg-white text-gray-600 text-sm 
+                        appearance-none focus:outline-none focus:ring-1 focus:ring-primary-500 
+                        focus:border-primary-500 ${currentLanguage === 'ar' ? 'text-right' : 'text-left'}`}
+                      dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
+                    >
+                      <option value="all">{t('doctors.allDepartments')}</option>
+                      {departments.map((dept) => (
+                        <option key={dept.id} value={dept.id}>
+                          {dept.name[currentLanguage]}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-                {t('doctors.pageTitle')}
-              </h1>
-              <p className="mt-4 text-lg leading-8 text-white/80">
-                {t('doctors.subtitle')}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Search and Filter Section */}
-        <div className="container mx-auto px-4 -mt-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="bg-white rounded-lg shadow p-4"
-          >
-            <div className="flex items-center gap-4">
-              {/* Department Filter */}
-              <div className="w-[260px]">
-                <div className="relative">
-                  <FaFilter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 z-10" />
-                  <select
-                    value={selectedDepartment}
-                    onChange={(e) => setSelectedDepartment(e.target.value)}
-                    className={`w-full h-11 pl-10 pr-8 rounded-lg border border-gray-200 bg-white text-gray-600 text-sm 
-                      appearance-none focus:outline-none focus:ring-1 focus:ring-primary-500 
-                      focus:border-primary-500 ${currentLanguage === 'ar' ? 'text-right' : 'text-left'}`}
-                    dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
-                  >
-                    <option value="all">{t('doctors.allDepartments')}</option>
-                    {departments.map((dept) => (
-                      <option key={dept.id} value={dept.id}>
-                        {dept.name[currentLanguage]}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
+                
+                {/* Search Input */}
+                <div className="flex-1">
+                  <div className="relative">
+                    <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <input
+                      type="text"
+                      placeholder={t('doctors.searchPlaceholder')}
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className={`w-full h-11 pl-10 pr-4 rounded-lg border border-gray-200 text-sm 
+                        placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-primary-500 
+                        focus:border-primary-500 ${currentLanguage === 'ar' ? 'text-right' : 'text-left'}`}
+                      dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
+                    />
                   </div>
                 </div>
               </div>
-              
-              {/* Search Input */}
-              <div className="flex-1">
-                <div className="relative">
-                  <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <input
-                    type="text"
-                    placeholder={t('doctors.searchPlaceholder')}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className={`w-full h-11 pl-10 pr-4 rounded-lg border border-gray-200 text-sm 
-                      placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-primary-500 
-                      focus:border-primary-500 ${currentLanguage === 'ar' ? 'text-right' : 'text-left'}`}
-                    dir={currentLanguage === 'ar' ? 'rtl' : 'ltr'}
-                  />
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Departments List */}
-        <section className="py-12">
-          <div className="container mx-auto px-4">
-            <AnimatePresence>
-              {filteredDepartments.length === 0 ? (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="text-center py-16"
-                >
-                  <p className="text-xl text-gray-600">{t('doctors.noResults')}</p>
-                </motion.div>
-              ) : (
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="space-y-16"
-                >
-                  {filteredDepartments.map((department) => (
-                    <motion.div
-                      key={department.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
-                    >
-                      <h2 className="text-3xl font-bold mb-8 text-gray-900 border-b pb-4">
-                        {department.name[currentLanguage]}
-                      </h2>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto w-[90%] sm:w-full mt-8">
-                        {department.doctors.map((doctor) => (
-                          <DoctorCard key={doctor.id} doctor={doctor} currentLanguage={currentLanguage} />
-                        ))}
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            </motion.div>
           </div>
-        </section>
+
+          {/* Departments List */}
+          <section className="py-12">
+            <div className="container mx-auto px-4">
+              <AnimatePresence>
+                {filteredDepartments.length === 0 ? (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="text-center py-16"
+                  >
+                    <p className="text-xl text-gray-600">{t('doctors.noResults')}</p>
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="space-y-16"
+                  >
+                    {filteredDepartments.map((department) => (
+                      <motion.div
+                        key={department.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+                      >
+                        <h2 className="text-3xl font-bold mb-8 text-gray-900 border-b pb-4">
+                          {department.name[currentLanguage]}
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto w-[90%] sm:w-full mt-8">
+                          {department.doctors.map((doctor) => (
+                            <DoctorCard key={doctor.id} doctor={doctor} currentLanguage={currentLanguage} />
+                          ))}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </section>
+        </div>
       </main>
     </>
   );

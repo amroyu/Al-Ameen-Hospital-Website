@@ -4,49 +4,26 @@ import { Helmet } from 'react-helmet';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaUser, FaPen, FaPaperPlane } from 'react-icons/fa';
 import Button from '../components/Common/Button';
 import SectionTitle from '../components/Common/SectionTitle';
+import PageHero from '../components/Common/PageHero';
 
 interface ContactForm {
   name: string;
   email: string;
-  phone: string;
-  subject: string;
   message: string;
 }
 
-const Contact: React.FC = () => {
+const Contact = () => {
   const { t, i18n } = useTranslation();
   const [form, setForm] = useState<ContactForm>({
     name: '',
     email: '',
-    phone: '',
-    subject: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', form);
-      setSubmitSuccess(true);
-      setForm({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    } finally {
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitSuccess(false), 3000);
-    }
+    // Handle form submission
+    console.log(form);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -59,215 +36,156 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <FaPhone className="text-blue-600 text-xl" />,
-      title: t('contact.callUs'),
-      value: '+966 12 736 6500',
-      dirClass: 'dir-ltr'
+      icon: <FaPhone className="w-6 h-6" />,
+      title: t('contact.phone'),
+      value: t('contact.phoneValue'),
+      href: 'tel:+966127366100'
     },
     {
-      icon: <FaWhatsapp className="text-blue-600 text-xl" />,
+      icon: <FaWhatsapp className="w-6 h-6" />,
       title: t('contact.whatsapp'),
-      value: '+966 55 555 5555',
-      dirClass: 'dir-ltr'
+      value: '+966 50 161 5005',
+      href: 'https://wa.me/966501615005'
     },
     {
-      icon: <FaEnvelope className="text-blue-600 text-xl" />,
+      icon: <FaEnvelope className="w-6 h-6" />,
       title: t('contact.email'),
-      value: 'info@alameenhospital.com'
+      value: 'info@alameenhospital.com',
+      href: 'mailto:info@alameenhospital.com'
     },
     {
-      icon: <FaMapMarkerAlt className="text-blue-600 text-xl" />,
+      icon: <FaMapMarkerAlt className="w-6 h-6" />,
       title: t('contact.address'),
-      value: t('contact.addressValue')
+      value: t('contact.addressValue'),
+      href: 'https://goo.gl/maps/YOUR_MAPS_LINK'
     }
   ];
 
   return (
-    <>
+    <div className="min-h-screen bg-gray-50">
       <Helmet>
         <title>{t('contact.title')} - {t('header.hospitalName')}</title>
         <meta name="description" content={t('contact.metaDescription')} />
       </Helmet>
 
-      <div className="pt-32 pb-12 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <SectionTitle
-            title={t('contact.pageTitle')}
-            subtitle={t('contact.pageSubtitle')}
-          />
+      <PageHero
+        title={t('contact.title')}
+        subtitle={t('contact.subtitle')}
+      />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            {/* Contact Information */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 transition-all duration-300 hover:shadow-2xl">
-              <h2 className="text-3xl font-bold text-blue-900 mb-12">{t('contact.contactInfo')}</h2>
-              
-              <div className="space-y-10">
+      <div className="container mx-auto px-4 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Information */}
+          <div>
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-8">{t('contact.getInTouch')}</h2>
+              <div className="space-y-6">
                 {contactInfo.map((info, index) => (
-                  <div
+                  <a
                     key={index}
-                    className="flex items-center group"
+                    href={info.href}
+                    target={info.href.startsWith('http') ? '_blank' : undefined}
+                    rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="flex items-start space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors duration-300 rtl:space-x-reverse"
                   >
-                    <div className="bg-blue-50 p-5 rounded-2xl shadow-sm flex items-center justify-center w-16 h-16 transition-all duration-300 group-hover:bg-blue-100">
-                      <span className="text-blue-600 text-2xl">{info.icon}</span>
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center text-primary-600">
+                        {info.icon}
+                      </div>
                     </div>
-                    <div className="flex-1 ml-6 rtl:ml-0 rtl:mr-6">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">{info.title}</h3>
-                      <p className={`text-gray-600 text-lg ${info.dirClass || ''}`}>{info.value}</p>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-1">{info.title}</h3>
+                      <p className="text-gray-600">{info.value}</p>
                     </div>
-                  </div>
+                  </a>
                 ))}
               </div>
-
-              {/* Map */}
-              <div className="mt-10 rounded-xl overflow-hidden h-72 w-full shadow-lg transform transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3713.7273006859386!2d40.4166!3d21.4379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e98f6559e5c8e9%3A0x56aa572aa30dc885!2sAl-Ameen%20Hospital!5e0!3m2!1sen!2ssa!4v1702402528276!5m2!1sen!2ssa"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={t('contact.mapTitle')}
-                  className="rounded-xl"
-                />
-              </div>
             </div>
+          </div>
 
-            {/* Contact Form */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 transition-all duration-300 hover:shadow-2xl">
-              <h3 className="text-2xl font-bold mb-8 text-blue-900 border-b pb-4">
-                {t('contact.sendMessage')}
-              </h3>
-              
+          {/* Contact Form */}
+          <div>
+            <div className="bg-white rounded-2xl shadow-lg p-8">
+              <h2 className="text-2xl font-bold text-gray-800 mb-8">{t('contact.sendMessage')}</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="group">
-                  <label className="block text-gray-700 mb-3 font-semibold transition-colors group-focus-within:text-blue-600">
-                    <span className="inline-flex items-center">
-                      <FaUser className="text-lg mr-3 rtl:ml-3 rtl:mr-0 text-gray-500 transition-colors group-focus-within:text-blue-600" />
-                      {t('contact.fullName')}
-                    </span>
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    {t('contact.form.name')}
                   </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                    required
-                    placeholder={t('contact.fullNamePlaceholder')}
-                    disabled={isSubmitting}
-                  />
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FaUser className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      className="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500"
+                      placeholder={t('contact.form.namePlaceholder')}
+                      required
+                    />
+                  </div>
                 </div>
 
-                <div className="group">
-                  <label className="block text-gray-700 mb-3 font-semibold transition-colors group-focus-within:text-blue-600">
-                    <span className="inline-flex items-center">
-                      <FaEnvelope className="text-lg mr-3 rtl:ml-3 rtl:mr-0 text-gray-500 transition-colors group-focus-within:text-blue-600" />
-                      {t('contact.email')}
-                    </span>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    {t('contact.form.email')}
                   </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                    required
-                    placeholder={t('contact.emailPlaceholder')}
-                    disabled={isSubmitting}
-                  />
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <FaEnvelope className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      className="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500"
+                      placeholder={t('contact.form.emailPlaceholder')}
+                      required
+                    />
+                  </div>
                 </div>
 
-                <div className="group">
-                  <label className="block text-gray-700 mb-3 font-semibold transition-colors group-focus-within:text-blue-600">
-                    <span className="inline-flex items-center">
-                      <FaPhone className="text-lg mr-3 rtl:ml-3 rtl:mr-0 text-gray-500 transition-colors group-focus-within:text-blue-600" />
-                      {t('contact.phone')}
-                    </span>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    {t('contact.form.message')}
                   </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-right"
-                    required
-                    placeholder={t('contact.phonePlaceholder')}
-                    dir="rtl"
-                    disabled={isSubmitting}
-                  />
+                  <div className="relative">
+                    <div className="absolute top-3 left-3 pointer-events-none">
+                      <FaPen className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <textarea
+                      name="message"
+                      id="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      rows={4}
+                      className="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500"
+                      placeholder={t('contact.form.messagePlaceholder')}
+                      required
+                    />
+                  </div>
                 </div>
 
-                <div className="group">
-                  <label className="block text-gray-700 mb-3 font-semibold transition-colors group-focus-within:text-blue-600">
-                    <span className="inline-flex items-center">
-                      <FaPen className="text-lg mr-3 rtl:ml-3 rtl:mr-0 text-gray-500 transition-colors group-focus-within:text-blue-600" />
-                      {t('contact.subject')}
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                    required
-                    placeholder={t('contact.subjectPlaceholder')}
-                    disabled={isSubmitting}
-                  />
+                <div>
+                  <button
+                    type="submit"
+                    className="w-full flex items-center justify-center px-6 py-3 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                  >
+                    <FaPaperPlane className="mr-2" />
+                    {t('contact.form.submit')}
+                  </button>
                 </div>
-
-                <div className="group">
-                  <label className="block text-gray-700 mb-3 font-semibold transition-colors group-focus-within:text-blue-600">
-                    <span className="inline-flex items-center">
-                      <FaPaperPlane className="text-lg mr-3 rtl:ml-3 rtl:mr-0 text-gray-500 transition-colors group-focus-within:text-blue-600" />
-                      {t('contact.message')}
-                    </span>
-                  </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 resize-none"
-                    rows={4}
-                    required
-                    placeholder={t('contact.messagePlaceholder')}
-                    disabled={isSubmitting}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-4 px-6 rounded-xl text-white font-semibold transition-all duration-300 flex items-center justify-center space-x-2 ${
-                    isSubmitting
-                      ? 'bg-gray-400 cursor-not-allowed'
-                      : submitSuccess
-                      ? 'bg-green-500 hover:bg-green-600'
-                      : 'bg-blue-600 hover:bg-blue-700'
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
-                  ) : submitSuccess ? (
-                    <>
-                      <span>✓</span>
-                      <span>{t('contact.messageSent')}</span>
-                    </>
-                  ) : (
-                    <>
-                      <FaPaperPlane className="transform -rotate-45" />
-                      <span>{t('contact.sendButton')}</span>
-                    </>
-                  )}
-                </button>
               </form>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

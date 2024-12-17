@@ -1,168 +1,147 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FaCalendarAlt } from 'react-icons/fa';
-import logo from '../../assets/images/hospital-logo.png';
+import { FaCalendarAlt, FaBars, FaTimes } from 'react-icons/fa';
+import headerImage from '../../assets/images/Hospital Header.png';
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 0;
-      setIsScrolled(isScrolled);
+      setIsScrolled(window.scrollY > 20);
     };
-
-    document.addEventListener('scroll', handleScroll);
-    return () => document.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleLanguage = () => {
-    const newLang = i18n.language === 'ar' ? 'en' : 'ar';
-    i18n.changeLanguage(newLang);
-  };
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   const navLinks = [
-    { path: '/', label: 'header.home' },
-    { path: '/about', label: 'header.about' },
-    { path: '/services', label: 'header.services' },
-    { path: '/announcements', label: 'header.announcements' },
-    { path: '/doctors', label: 'header.doctors' },
-    { path: '/appointments', label: 'header.appointments' },
-    { path: '/contact', label: 'header.contact' },
+    { to: '/', label: t('header.home') },
+    { to: '/about', label: t('header.about') },
+    { to: '/services', label: t('header.services') },
+    { to: '/doctors', label: t('header.doctors') },
+    { to: '/appointments', label: t('header.appointments') },
+    { to: '/contact', label: t('header.contact') },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === 'en' ? 'ar' : 'en');
+  };
 
   return (
-    <header 
-      className="fixed w-full z-50 transition-all duration-300 bg-gradient-to-r from-green-50 via-white to-green-50 shadow-sm"
-    >
-      <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex items-center justify-between h-20 md:h-28">
-          {/* Logo - Moved to the right for Arabic */}
-          <div className="flex items-center order-2 md:order-3">
-            <Link to="/" className="flex items-center">
-              <img
-                src={logo}
-                alt="Al-Ameen Hospital"
-                className="h-16 md:h-24 w-auto transition-transform duration-300 hover:scale-105"
-              />
-            </Link>
-          </div>
+    <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
+    }`}>
+      <div className="container mx-auto px-4">
+        <nav className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link to="/" className="flex-shrink-0 group">
+            <img
+              src={headerImage}
+              alt="Al-Ameen Hospital"
+              className="h-20 w-auto transform transition-transform duration-300 group-hover:scale-105"
+            />
+          </Link>
 
-          {/* Navigation - Centered */}
-          <nav className="hidden md:flex items-center space-x-6 rtl:space-x-reverse order-1 md:order-2 flex-grow justify-center">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Link
-                key={link.path}
-                to={link.path}
-                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 group ${
-                  isActive(link.path)
-                    ? 'text-green-700'
-                    : 'text-gray-700 hover:text-green-700'
+                key={link.to}
+                to={link.to}
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group hover:text-primary-600 text-gray-800 ${
+                  location.pathname === link.to
+                    ? 'text-primary-600 font-semibold'
+                    : ''
                 }`}
               >
-                {t(link.label)}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-green-600 transform origin-left transition-transform duration-300 ${
-                  isActive(link.path) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                }`}></span>
+                {link.label}
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary-600 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100 ${
+                  location.pathname === link.to ? 'scale-x-100' : ''
+                }`} />
               </Link>
             ))}
-          </nav>
+          </div>
 
-          {/* Language Toggle and Appointment Button */}
-          <div className="hidden md:flex items-center space-x-4 rtl:space-x-reverse order-3 md:order-1">
+          {/* Right Section */}
+          <div className="hidden lg:flex items-center space-x-4">
+            {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
-              className="px-4 py-2 rounded-full text-sm font-medium bg-green-50 text-green-700 hover:bg-green-100 transition-all duration-300"
+              className="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 text-gray-800 hover:bg-gray-100"
             >
-              {i18n.language === 'ar' ? 'English' : 'العربية'}
+              {i18n.language === 'en' ? 'العربية' : 'English'}
             </button>
+
+            {/* Book Appointment Button */}
             <Link
               to="/appointments"
-              className="flex items-center px-6 py-2.5 rounded-full text-sm font-medium bg-green-600 text-white hover:bg-green-700 hover:shadow-lg transition-all duration-300 group"
+              className="px-6 py-2.5 text-sm font-semibold text-white rounded-lg bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-2"
             >
-              <FaCalendarAlt className="w-4 h-4 mr-2 rtl:ml-2 rtl:mr-0 group-hover:scale-110 transition-transform duration-300" />
-              {t('header.bookAppointment')}
+              <FaCalendarAlt className="w-4 h-4" />
+              <span>{t('header.bookAppointment')}</span>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            onClick={toggleMobileMenu}
-            className="md:hidden focus:outline-none order-1 p-2 -ml-2"
-            aria-label="Toggle menu"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 rounded-lg transition-colors duration-300 text-gray-800 hover:bg-gray-100"
           >
-            <svg
-              className="w-6 h-6 text-gray-700"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
+            {isMobileMenuOpen ? (
+              <FaTimes className="w-6 h-6" />
+            ) : (
+              <FaBars className="w-6 h-6" />
+            )}
           </button>
-        </div>
+        </nav>
       </div>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-[5rem] inset-x-0 bg-white shadow-lg transition-all duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        className={`lg:hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen
+            ? 'max-h-screen opacity-100 visible'
+            : 'max-h-0 opacity-0 invisible'
         }`}
-        style={{
-          maxHeight: 'calc(100vh - 5rem)',
-          overflowY: 'auto'
-        }}
       >
-        <div className="px-4 py-4 space-y-2">
-          {/* Mobile Buttons */}
-          <div className="flex items-center justify-between gap-2 mb-4">
+        <div className="container mx-auto px-4 py-4 bg-white shadow-lg">
+          <div className="flex flex-col space-y-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-300 ${
+                  location.pathname === link.to
+                    ? 'text-primary-600 bg-primary-50'
+                    : 'text-gray-800 hover:bg-gray-100'
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
             <button
               onClick={() => {
                 toggleLanguage();
                 setIsMobileMenuOpen(false);
               }}
-              className="flex-1 px-4 py-2 text-sm font-medium text-green-700 bg-green-50 rounded-lg hover:bg-green-100 transition-colors duration-300"
+              className="px-4 py-2 text-sm font-medium text-gray-800 rounded-lg hover:bg-gray-100 transition-colors duration-300 text-left"
             >
-              {i18n.language === 'ar' ? 'English' : 'العربية'}
+              {i18n.language === 'en' ? 'العربية' : 'English'}
             </button>
             <Link
               to="/appointments"
+              className="px-4 py-2 text-sm font-semibold text-white rounded-lg bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 transition-all duration-300 flex items-center justify-center space-x-2"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex-1 flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium bg-green-600 text-white hover:bg-green-700 transition-all duration-300"
             >
-              <FaCalendarAlt className="w-4 h-4 mr-2 rtl:ml-2 rtl:mr-0" />
-              {t('header.bookAppointment')}
+              <FaCalendarAlt className="w-4 h-4" />
+              <span>{t('header.bookAppointment')}</span>
             </Link>
           </div>
-
-          {/* Mobile Navigation Links */}
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`block px-4 py-2.5 text-sm font-medium rounded-lg transition-colors duration-300 ${
-                isActive(link.path)
-                  ? 'bg-green-50 text-green-700'
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-green-700'
-              }`}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t(link.label)}
-            </Link>
-          ))}
         </div>
       </div>
     </header>

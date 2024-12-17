@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
+import PageHero from '../components/Common/PageHero';
 import { 
   FaHospital, 
   FaUserMd, 
@@ -46,8 +47,7 @@ const departmentIcons = [
 ];
 
 const About = () => {
-  const { t, i18n } = useTranslation();
-  const isRTL = i18n.language === 'ar';
+  const { t } = useTranslation();
 
   const stats = [
     {
@@ -72,81 +72,74 @@ const About = () => {
   const departmentsList = (t('about.departments.list', { returnObjects: true }) as string[]);
 
   return (
-    <>
+    <div className="min-h-screen">
+      <PageHero
+        title={t('about.title')}
+        subtitle={t('about.subtitle')}
+      />
       <Helmet>
         <title>{t('about.pageTitle')}</title>
         <meta name="description" content={t('about.metaDescription')} />
       </Helmet>
-
-      <div className="pt-32 pb-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          {/* Hero Section */}
-          <div className="text-center mb-20">
-            <h1 className="text-5xl font-bold mb-8 text-gray-800">{t('about.title')}</h1>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              {t('about.description')}
-            </p>
-          </div>
-
-          {/* Stats Section */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20 px-4">
-            {stats.map((stat, index) => (
-              <div 
-                key={index} 
-                className="bg-white p-10 rounded-2xl shadow-lg text-center transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-              >
-                <div className="flex justify-center mb-6">
-                  <div className="p-4 bg-blue-50 rounded-full">
-                    <div className="w-12 h-12 text-blue-600">
-                      {stat.icon}
-                    </div>
+      <div className="container mx-auto px-4 py-20">
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20 px-4">
+          {stats.map((stat, index) => (
+            <div 
+              key={index} 
+              className="bg-white p-10 rounded-2xl shadow-lg text-center transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            >
+              <div className="flex justify-center mb-6">
+                <div className="p-4 bg-blue-50 rounded-full">
+                  <div className="w-12 h-12 text-blue-600">
+                    {stat.icon}
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-gray-800 mb-3 flex items-center justify-center">
-                  {stat.number}
-                  {stat.suffix && <span className="text-2xl ml-1 text-gray-600">{stat.suffix}</span>}
-                </div>
-                <div className="text-lg text-gray-600 font-medium">{stat.label}</div>
               </div>
-            ))}
-          </div>
-
-          {/* Hospital Image Section */}
-          <div className="mb-16">
-            <img 
-              src={HospitalImage} 
-              alt="Al-Ameen Hospital Building" 
-              className="w-full rounded-lg shadow-lg object-contain h-[600px] mx-auto"
-            />
-          </div>
-
-          {/* Departments Section */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-10">{t('about.mainDepartments.title')}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {(t('about.mainDepartments.departments', { returnObjects: true }) as string[]).map((department, index) => {
-                const IconComponent = departmentIcons[index].icon;
-                const iconColor = departmentIcons[index].color;
-                
-                return (
-                  <div 
-                    key={index}
-                    className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center ${iconColor} transition-colors duration-300`}>
-                        <IconComponent className="w-6 h-6" />
-                      </div>
-                      <h3 className="text-lg font-medium text-gray-800 flex-1">{department}</h3>
-                    </div>
-                  </div>
-                );
-              })}
+              <div className="text-4xl font-bold text-gray-800 mb-3 flex items-center justify-center">
+                {stat.number}
+                {stat.suffix && <span className="text-2xl ml-1 text-gray-600">{stat.suffix}</span>}
+              </div>
+              <div className="text-lg text-gray-600 font-medium">{stat.label}</div>
             </div>
+          ))}
+        </div>
+
+        {/* Hospital Image Section */}
+        <div className="mb-16">
+          <img 
+            src={HospitalImage} 
+            alt="Al-Ameen Hospital Building" 
+            className="w-full rounded-lg shadow-lg object-contain h-[600px] mx-auto"
+          />
+        </div>
+
+        {/* Departments Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-10">{t('about.mainDepartments.title')}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(t('about.mainDepartments.departments', { returnObjects: true }) as string[]).map((department, index) => {
+              const IconComponent = departmentIcons[index].icon;
+              const iconColor = departmentIcons[index].color;
+              
+              return (
+                <div 
+                  key={index}
+                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center ${iconColor} transition-colors duration-300`}>
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-lg font-medium text-gray-800 flex-1">{department}</h3>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

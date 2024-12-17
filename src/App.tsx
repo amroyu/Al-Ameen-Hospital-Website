@@ -27,7 +27,7 @@ const App: React.FC = () => {
       <div className={`flex flex-col min-h-screen ${i18n.language === 'ar' ? 'rtl' : 'ltr'}`}>
         <Header />
         
-        <main className="flex-grow">
+        <main className="flex-grow pt-[180px] md:pt-[200px]"> 
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

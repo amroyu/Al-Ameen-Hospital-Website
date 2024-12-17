@@ -12,10 +12,11 @@ interface FormData {
 }
 
 interface AppointmentFormProps {
-  onClose: () => void;
+  onClose?: () => void;
+  onSuccess?: () => void;
 }
 
-const AppointmentForm: React.FC<AppointmentFormProps> = ({ onClose }) => {
+const AppointmentForm: React.FC<AppointmentFormProps> = ({ onClose, onSuccess }) => {
   const { t } = useTranslation();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
@@ -39,11 +40,15 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ onClose }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData);
     setStep(5); // Show success message
+    
+    // Call both callbacks if provided
+    onSuccess?.();
+    onClose?.();
   };
 
   const renderStepContent = () => {
