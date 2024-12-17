@@ -185,7 +185,12 @@
     },
     "radiology": {
       "name": "الأشعة",
-      "description": "يقدم قسم الأشعة خدمات تصوير متقدمة للتشخيص الدقيق وتخطيط العلاج."
+      "description": "خدمات التصوير والتشخيص المتقدمة",
+      "subServices": {
+        "x-ray": "خدمات الأشعة السينية",
+        "ct-scan": "خدمات الأشعة المقطعية",
+        "mri": "خدمات الرنين المغناطيسي"
+      }
     },
     "list": [
       "الطب الباطني",
@@ -209,25 +214,9 @@
     "noData": "لا توجد أقسام متاحة"
   },
   "services": {
-    "title": "خدماتنا",
-    "metaTitle": "الخدمات الطبية في مستشفى الأمين",
-    "metaDescription": "خدمات طبية شاملة في مستشفى الأمين. رعاية متخصصة في مختلف التخصصات بما في ذلك أمراض القلب وطب الأطفال والمزيد.",
-    "subtitle": "رعاية متخصصة في مختلف المجالات الطبية",
-    "searchPlaceholder": "ابحث عن خدمة...",
-    "availableServices": "الخدمات المتاحة",
-    "viewDepartmentDoctors": "عرض أطباء القسم",
-    "noResults": "لا توجد خدمات تطابق بحثك.",
-    "sectionTitle": "خدماتنا الطبية",
-    "sectionDescription": "خدمات رعاية صحية شاملة مقدمة بخبرة واهتمام",
-    "categories": {
-      "specialty": "التخصصات الطبية",
-      "diagnostic": "خدمات التشخيص",
-      "emergency": "خدمات الطوارئ",
-      "support": "الخدمات المساندة"
-    },
     "internal-medicine": {
-      "name": "الطب الباطني",
-      "description": "رعاية شاملة للبالغين، مع التركيز على الوقاية وتشخيص وعلاج الأمراض.",
+      "title": "الطب الباطني",
+      "description": "رعاية شاملة للمرضى البالغين، متخصصة في الوقاية وتشخيص وعلاج مختلف الحالات الطبية.",
       "subServices": {
         "general-checkup": "الفحص الطبي العام",
         "chronic-diseases": "علاج الأمراض المزمنة",
@@ -235,26 +224,26 @@
       }
     },
     "pediatrics": {
-      "name": "طب الأطفال",
-      "description": "رعاية صحية متخصصة للرضع والأطفال والمراهقين",
+      "title": "طب الأطفال",
+      "description": "رعاية صحية متخصصة للرضع والأطفال والمراهقين.",
       "subServices": {
         "newborn-care": "رعاية حديثي الولادة",
-        "vaccinations": "تطعيمات الأطفال",
-        "child-development": "متابعة نمو الطفل"
+        "vaccinations": "التطعيمات",
+        "child-development": "تطور الطفل"
       }
     },
     "orthopedics": {
-      "name": "العظام والكسور",
-      "description": "علاج حالات الجهاز العضلي الهيكلي والإصابات",
+      "title": "العظام والمفاصل",
+      "description": "علاج أمراض وإصابات العظام والعضلات والمفاصل.",
       "subServices": {
         "joint-surgery": "جراحة المفاصل",
         "spine-treatment": "علاج العمود الفقري",
-        "sports-medicine": "طب الرياضة"
+        "sports-medicine": "طب رياضي"
       }
     },
     "general-surgery": {
-      "name": "الجراحة العامة",
-      "description": "رعاية جراحية شاملة وإجراءات متقدمة",
+      "title": "الجراحة العامة",
+      "description": "خدمات وإجراءات جراحية شاملة.",
       "subServices": {
         "laparoscopic-surgery": "جراحة المنظار",
         "hernia-repair": "إصلاح الفتق",
@@ -262,17 +251,17 @@
       }
     },
     "obstetrics-gynecology": {
-      "name": "النساء والولادة",
-      "description": "خدمات رعاية صحية نسائية متكاملة",
+      "title": "النساء والولادة",
+      "description": "خدمات صحية شاملة للمرأة.",
       "subServices": {
-        "prenatal-care": "رعاية الحمل",
+        "prenatal-care": "رعاية ما قبل الولادة",
         "delivery": "خدمات الولادة",
         "gynecological-surgery": "جراحة نسائية"
       }
     },
     "dental": {
-      "name": "طب الأسنان",
-      "description": "خدمات رعاية الأسنان الشاملة",
+      "title": "طب الأسنان",
+      "description": "خدمات طب الأسنان الشاملة.",
       "subServices": {
         "dental-surgery": "جراحة الأسنان",
         "orthodontics": "تقويم الأسنان",
@@ -280,35 +269,35 @@
       }
     },
     "ent": {
-      "name": "الأنف والأذن والحنجرة",
-      "description": "رعاية متخصصة للأذن والأنف والحنجرة",
+      "title": "الأنف والأذن والحنجرة",
+      "description": "رعاية متخصصة لمشاكل الأنف والأذن والحنجرة والرأس والرقبة.",
       "subServices": {
         "ear-treatment": "علاج الأذن",
         "sinus-surgery": "جراحة الجيوب الأنفية",
-        "throat-disorders": "اضطرابات الحنجرة"
+        "throat-disorders": "أمراض الحنجرة"
       }
     },
     "rheumatology": {
-      "name": "الروماتيزم",
-      "description": "علاج أمراض المناعة الذاتية والمفاصل",
+      "title": "الروماتيزم",
+      "description": "علاج أمراض المناعة الذاتية والمفاصل.",
       "subServices": {
         "arthritis": "علاج التهاب المفاصل",
-        "autoimmune-diseases": "علاج أمراض المناعة الذاتية",
+        "autoimmune-diseases": "أمراض المناعة الذاتية",
         "joint-pain": "علاج آلام المفاصل"
       }
     },
     "cardiology": {
-      "name": "القلب",
-      "description": "خدمات رعاية القلب الشاملة",
+      "title": "أمراض القلب",
+      "description": "خدمات شاملة لرعاية القلب.",
       "subServices": {
         "heart-surgery": "جراحة القلب",
         "cardiac-catheterization": "قسطرة القلب",
-        "ecg": "تخطيط القلب"
+        "ecg-services": "خدمات تخطيط القلب"
       }
     },
     "neurology": {
-      "name": "الأعصاب",
-      "description": "علاج الاضطرابات العصبية",
+      "title": "الأعصاب",
+      "description": "علاج الاضطرابات العصبية.",
       "subServices": {
         "stroke-treatment": "علاج السكتة الدماغية",
         "epilepsy": "علاج الصرع",
@@ -316,17 +305,17 @@
       }
     },
     "psychiatry": {
-      "name": "الطب النفسي",
-      "description": "رعاية ودعم الصحة النفسية",
+      "title": "الطب النفسي",
+      "description": "رعاية ودعم الصحة النفسية.",
       "subServices": {
-        "mental-health": "خدمات الصحة النفسية",
+        "mental-health": "الرعاية النفسية",
         "therapy": "العلاج النفسي",
-        "counseling": "خدمات الاستشارة"
+        "counseling": "الاستشارات النفسية"
       }
     },
     "ophthalmology": {
-      "name": "العيون",
-      "description": "خدمات رعاية العيون الشاملة",
+      "title": "طب العيون",
+      "description": "خدمات شاملة للعناية بالعيون.",
       "subServices": {
         "cataract-surgery": "جراحة المياه البيضاء",
         "glaucoma": "علاج المياه الزرقاء",
@@ -334,8 +323,8 @@
       }
     },
     "urology": {
-      "name": "المسالك البولية",
-      "description": "رعاية وعلاج المسالك البولية",
+      "title": "المسالك البولية",
+      "description": "رعاية المسالك البولية والجهاز التناسلي الذكري.",
       "subServices": {
         "kidney-stones": "علاج حصوات الكلى",
         "prostate-treatment": "علاج البروستاتا",
@@ -343,46 +332,57 @@
       }
     },
     "pulmonology": {
-      "name": "الرئة",
-      "description": "رعاية وعلاج الجهاز التنفسي",
+      "title": "أمراض الرئة",
+      "description": "رعاية وعلاج الجهاز التنفسي.",
       "subServices": {
         "asthma": "علاج الربو",
         "copd": "علاج الانسداد الرئوي المزمن",
-        "respiratory-infections": "التهابات الجهاز التنفسي"
+        "respiratory-infections": "علاج التهابات الجهاز التنفسي"
       }
     },
     "nephrology": {
-      "name": "الكلى",
-      "description": "علاج وإدارة أمراض الكلى",
+      "title": "أمراض الكلى",
+      "description": "علاج وإدارة أمراض الكلى.",
       "subServices": {
         "kidney-disease": "علاج أمراض الكلى",
-        "dialysis": "خدمات غسيل الكلى",
+        "dialysis": "خدمات الغسيل الكلوي",
         "transplant-care": "رعاية زراعة الكلى"
       }
     },
     "anesthesiology": {
-      "name": "التخدير",
-      "description": "خدمات التخدير وإدارة الألم",
+      "title": "التخدير",
+      "description": "خدمات التخدير وعلاج الألم.",
       "subServices": {
-        "surgical-anesthesia": "تخدير العمليات",
+        "surgical-anesthesia": "التخدير الجراحي",
         "pain-management": "علاج الألم",
         "critical-care": "العناية المركزة"
       }
     },
     "radiology": {
-      "name": "الأشعة",
+      "title": "الأشعة التشخيصية",
       "description": "خدمات التصوير والتشخيص المتقدمة",
       "subServices": {
         "x-ray": "خدمات الأشعة السينية",
-        "ct-scan": "الأشعة المقطعية",
-        "mri": "التصوير بالرنين المغناطيسي"
+        "ct-scan": "خدمات الأشعة المقطعية",
+        "mri": "خدمات الرنين المغناطيسي"
       }
+    },
+    "title": "خدماتنا الطبية",
+    "subtitle": "نقدم خدمات رعاية صحية شاملة مع مرافق حديثة ومتخصصين طبيين ذوي خبرة.",
+    "searchPlaceholder": "ابحث عن الخدمات...",
+    "viewDepartmentDoctors": "عرض أطباء القسم",
+    "noResults": "لم يتم العثور على خدمات تطابق بحثك.",
+    "categories": {
+      "specialty": "الخدمات التخصصية",
+      "diagnostic": "خدمات التشخيص",
+      "emergency": "خدمات الطوارئ",
+      "support": "الخدمات المساندة"
     }
   },
   "doctors": {
-    "pageTitle": "فريقنا الطبي",
-    "title": "تعرف على أطبائنا المتخصصين",
+    "title": "تعرف على فريقنا الطبي",
     "subtitle": "فريقنا من الأطباء المؤهلين تأهيلاً عالياً هنا لتقديم أفضل رعاية طبية",
+    "pageTitle": "فريقنا الطبي",
     "metaDescription": "تعرف على الفريق الطبي في مستشفى الأمين من الاستشاريين والمتخصصين في مختلف الأقسام",
     "schedule": {
       "morning": "صباحاً",
@@ -556,6 +556,13 @@
         "description": "أحدث التقنيات الطبية للعلاجات الطارئة"
       }
     }
+  },
+  "announcements": {
+    "title": "إعلانات المستشفى",
+    "subtitle": "ابق على اطلاع بآخر الأخبار والفعاليات من مستشفى الأمين",
+    "pageTitle": "إعلانات المستشفى",
+    "description": "تابع آخر خدماتنا الطبية والعروض الخاصة ومبادرات الصحة المجتمعية",
+    "readMore": "اقرأ المزيد"
   },
   "footer": {
     "contact": "معلومات التواصل",

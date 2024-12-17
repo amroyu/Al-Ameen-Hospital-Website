@@ -1,9 +1,24 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Allow CSS, JS, and Images
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.ico$
 
 # Sitemaps
 Sitemap: https://www.alameenhospital.com/sitemap.xml
 
 # Crawl-delay
-Crawl-delay: 10
+Crawl-delay: 5
+
+# Host
+Host: www.alameenhospital.com

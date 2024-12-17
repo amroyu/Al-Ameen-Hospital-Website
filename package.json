@@ -10,6 +10,7 @@
     "cra-template": "1.2.0",
     "framer-motion": "^11.14.1",
     "i18next": "^23.16.8",
+    "i18next-http-backend": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
@@ -50,6 +51,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/i18next-browser-languagedetector": "^2.0.2",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
     "autoprefixer": "^10.4.20",

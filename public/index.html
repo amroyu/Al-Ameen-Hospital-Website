@@ -5,29 +5,30 @@
     <link rel="icon" href="%PUBLIC_URL%/images/hospital-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0ea5e9" />
-    <meta
-      name="description"
-      content="Al-Ameen Hospital - Providing quality healthcare services in Taif since 1399 AH"
-    />
+    <meta name="description" content="Al-Ameen Hospital - Providing comprehensive healthcare services in Taif with state-of-the-art facilities and experienced medical professionals" />
+    <meta name="keywords" content="Al-Ameen Hospital, Taif Hospital, Healthcare, Medical Services, Doctors, Appointments" />
+    <meta property="og:title" content="Al-Ameen Hospital | Comprehensive Healthcare in Taif" />
+    <meta property="og:description" content="Al-Ameen Hospital - Providing comprehensive healthcare services in Taif with state-of-the-art facilities and experienced medical professionals" />
+    <meta property="og:image" content="%PUBLIC_URL%/images/hospital-logo.png" />
+    <meta property="og:url" content="https://www.alameenhospital.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/hospital-logo.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="%PUBLIC_URL%/fonts/IBMPlexSansArabic-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="%PUBLIC_URL%/images/hospital-logo.png" as="image" />
+    
     <title>Al-Ameen Hospital | Comprehensive Healthcare in Taif</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="text-align: center; padding: 20px;">
+        <h1>JavaScript Required</h1>
+        <p>Please enable JavaScript to access Al-Ameen Hospital's website. We use JavaScript to provide an interactive and secure experience.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

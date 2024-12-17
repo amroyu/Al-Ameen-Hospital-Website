@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet';
 import { FaCalendarAlt, FaArrowRight } from 'react-icons/fa';
 import ImageModal from '../components/ImageModal/ImageModal';
+import PageHero from '../components/Common/PageHero';
 
 // Import images
 import announcement1 from '../assets/images/announcements/Screenshot 2024-12-12 at 20.37.43.png';
@@ -25,6 +27,7 @@ const AnnouncementCard: React.FC<Announcement> = ({ title, titleAr, date, image,
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageError, setImageError] = useState(false);
   
   // Get the correct image source
   const getImageSource = (imageName: string) => {
@@ -44,13 +47,19 @@ const AnnouncementCard: React.FC<Announcement> = ({ title, titleAr, date, image,
       <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
         <div 
           className="relative aspect-[16/9] overflow-hidden cursor-pointer"
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => !imageError && setIsModalOpen(true)}
         >
           <img
             src={getImageSource(image)}
             alt={isArabic ? titleAr || title : title}
-            className="w-full h-full object-contain hover:opacity-90 transition-opacity"
+            className={`w-full h-full object-contain transition-opacity ${imageError ? 'opacity-50' : 'hover:opacity-90'}`}
+            onError={() => setImageError(true)}
           />
+          {imageError && (
+            <div className="absolute inset-0 flex items-center justify-center text-gray-500">
+              {t('common.imageError')}
+            </div>
+          )}
         </div>
         <div className="p-6">
           <div className="flex items-center text-gray-500 mb-2">
@@ -67,8 +76,9 @@ const AnnouncementCard: React.FC<Announcement> = ({ title, titleAr, date, image,
             className={`flex items-center text-primary-500 hover:text-primary-600 transition-colors duration-200 ${
               isArabic ? 'flex-row-reverse' : ''
             }`}
+            onClick={() => setIsModalOpen(true)}
           >
-            <span>{isArabic ? 'اقرأ المزيد' : t('common.readMore')}</span>
+            <span>{t('announcements.readMore')}</span>
             <FaArrowRight className={`${isArabic ? 'ml-0 mr-2 transform rotate-180' : 'ml-2'}`} />
           </button>
         </div>
@@ -145,27 +155,28 @@ const Announcements: React.FC = () => {
   ];
 
   return (
-    <div className="pt-28 min-h-screen bg-gray-50">
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              {t('announcements.pageTitle')}
-            </h1>
-            <div className="w-24 h-1 bg-primary-500 mx-auto mb-6"></div>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              {t('announcements.description')}
-            </p>
+    <>
+      <Helmet>
+        <title>{t('announcements.pageTitle')} | {t('header.hospitalName')}</title>
+        <meta name="description" content={t('announcements.description')} />
+      </Helmet>
+      
+      <div className="min-h-screen bg-gray-50">
+        <PageHero
+          title={t('announcements.title')}
+          subtitle={t('announcements.subtitle')}
+        />
+        <section className="py-20">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {announcements.map((announcement) => (
+                <AnnouncementCard key={announcement.id} {...announcement} />
+              ))}
+            </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {announcements.map((announcement) => (
-              <AnnouncementCard key={announcement.id} {...announcement} />
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 };
 

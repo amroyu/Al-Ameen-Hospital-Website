@@ -132,7 +132,7 @@ const Appointments: React.FC = () => {
       />
       <div className="container mx-auto px-4">
         {/* Appointment Form Card */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto -mt-8 relative z-10">
           <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 relative overflow-hidden">
             {/* Card Background Pattern */}
             <div className="absolute inset-0 pointer-events-none">
@@ -306,14 +306,6 @@ const Appointments: React.FC = () => {
             </form>
           </div>
         </div>
-      </div>
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
-          {t('appointments.title')}
-        </h1>
-        <p className="text-gray-600 text-center mb-8">
-          {t('appointments.subtitle')}
-        </p>
       </div>
     </div>
   );
