@@ -489,53 +489,60 @@
   "appointments": {
     "title": "حجز موعد",
     "subtitle": "احجز موعدك مع أخصائيينا",
-    "departmentPlaceholder": "اختر القسم",
-    "submit": "تأكيد الموعد",
-    "phoneNumber": "رقم الهاتف",
-    "phonePlaceholder": "ادخل رقم هاتفك",
-    "preferredDate": "التاريخ المفضل",
-    "datePlaceholder": "يوم.شهر.سنة",
-    "validation": {
-      "required": "يرجى تعبئة هذا الحقل"
-    },
     "fullName": "الاسم الكامل",
-    "fullNamePlaceholder": "ادخل اسمك الكامل",
-    "email": "البريد الإلكتروني",
-    "emailPlaceholder": "ادخل بريدك الإلكتروني",
+    "fullNamePlaceholder": "أدخل اسمك الكامل",
+    "phoneNumber": "رقم الجوال",
+    "phoneNumberPlaceholder": "أدخل رقم جوالك",
+    "email": "البريد الإلكتروني (اختياري)",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
     "department": "القسم",
-    "selectDepartment": "اختر القسم",
+    "departmentPlaceholder": "اختر القسم",
+    "preferredDate": "التاريخ المفضل",
+    "datePlaceholder": "اختر التاريخ المفضل",
     "preferredTime": "الوقت المفضل",
+    "timePlaceholder": "اختر الوقت المفضل",
     "notes": "ملاحظات إضافية",
-    "notesPlaceholder": "أي متطلبات خاصة أو معلومات إضافية",
-    "submitButton": "تأكيد الحجز",
-    "submitting": "جاري الحجز...",
-    "importantNotes": "ملاحظات هامة",
-    "note1": "سيتم تأكيد موعدك عبر رسالة نصية على رقم الجوال المسجل",
-    "note2": "يرجى الحضور قبل الموعد بـ 15 دقيقة",
-    "note3": "في حالة الرغبة بإلغاء الموعد يرجى إبلاغنا قبل 24 ساعة",
-    "note4": "للاستفسارات العاجلة يرجى الاتصال على الرقم: 6500 736 12 966+"
+    "notesPlaceholder": "هل لديك أي متطلبات أو مخاوف محددة؟",
+    "submit": "تأكيد الموعد",
+    "submitting": "جاري الإرسال...",
+    "submitSuccess": "تم إرسال طلب الموعد بنجاح! سنتواصل معك قريباً.",
+    "submitError": "فشل في إرسال الموعد. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.",
+    "validation": {
+      "required": "هذا الحقل مطلوب",
+      "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح"
+    }
   },
   "contact": {
     "title": "اتصل بنا",
     "metaTitle": "اتصل بمستشفى الأمين",
     "metaDescription": "تواصل مع مستشفى الأمين. اتصل بنا للمواعيد والاستفسارات أو أي مساعدة طبية.",
     "subtitle": "نحن هنا للمساعدة. تواصل معنا عبر أي من هذه القنوات.",
-    "getInTouch": "ابقَ على تواصل",
+    "getInTouch": "تواصل معنا",
     "sendMessage": "أرسل لنا رسالة",
     "phone": "الهاتف",
-    "phoneValue": "٠١٢٧٣٦٦١٠٠",
+    "phoneValue": "+966 12 736 6100",
     "whatsapp": "واتساب",
     "email": "البريد الإلكتروني",
-    "address": "العنوان",
-    "addressValue": "طريق الملك فيصل، حي السلامة، الطائف 26511، المملكة العربية السعودية",
+    "addressTitle": "العنوان",
+    "address": "٥٨٩٩ أبو بكر الصديق - السلامة - الطائف ٢٦٥١١",
+    "addressAr": "٥٨٩٩ أبو بكر الصديق - السلامة - الطائف ٢٦٥١١",
     "form": {
       "name": "الاسم الكامل",
       "namePlaceholder": "أدخل اسمك الكامل",
+      "phoneNumber": "رقم الجوال",
+      "phoneNumberPlaceholder": "أدخل رقم جوالك (مثال: 05xxxxxxxx)",
       "email": "البريد الإلكتروني",
-      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني (اختياري)",
       "message": "الرسالة",
       "messagePlaceholder": "كيف يمكننا مساعدتك؟",
-      "submit": "إرسال الرسالة"
+      "submit": "إرسال الرسالة",
+      "successMessage": "شكراً لتواصلك معنا! سنقوم بالرد عليك قريباً.",
+      "errorMessage": "عذراً، حدث خطأ في إرسال رسالتك. يرجى المحاولة مرة أخرى.",
+      "sending": "جاري الإرسال..."
+    },
+    "validation": {
+      "required": "هذا الحقل مطلوب",
+      "invalidEmail": "يرجى إدخال بريد إلكتروني صحيح"
     }
   },
   "emergency": {
@@ -589,6 +596,7 @@
     "readMore": "اقرأ المزيد",
     "learnMore": "اقرأ المزيد",
     "contactUs": "اتصل بنا",
-    "bookAppointment": "حجز موعد"
+    "bookAppointment": "حجز موعد",
+    "optional": "اختياري"
   }
 }

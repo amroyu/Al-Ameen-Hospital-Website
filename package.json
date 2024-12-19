@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@emailjs/browser": "^4.4.1",
     "@types/react-helmet": "^6.1.11",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.6.2",
@@ -51,6 +52,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@types/i18next-browser-languagedetector": "^2.0.2",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",

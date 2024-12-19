@@ -22,6 +22,7 @@ export default {
           700: '#15803d',
           800: '#166534',
           900: '#14532d',
+          950: '#052e16',
         },
       },
       keyframes: {
@@ -116,5 +117,6 @@ export default {
       }))
       addUtilities(utilities)
     },
+    require('@tailwindcss/aspect-ratio'),
   ],
 }

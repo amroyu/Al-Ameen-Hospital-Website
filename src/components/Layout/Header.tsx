@@ -106,19 +106,19 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden transition-all duration-300 ease-in-out ${
+          className={`lg:hidden fixed left-0 right-0 bg-white/95 backdrop-blur-md shadow-lg transition-all duration-300 ease-in-out ${
             isMobileMenuOpen
-              ? 'max-h-screen opacity-100 visible'
-              : 'max-h-0 opacity-0 invisible'
+              ? 'opacity-100 visible translate-y-16'
+              : 'opacity-0 invisible -translate-y-full'
           }`}
         >
-          <div className="py-2 space-y-1">
+          <div className="py-4 space-y-2 container mx-auto px-4">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-4 py-1.5 text-sm font-medium transition-colors duration-300 ${
+                className={`block px-4 py-2.5 text-base font-medium rounded-lg transition-colors duration-300 ${
                   location.pathname === link.to
                     ? 'text-primary-600 bg-primary-50'
                     : 'text-gray-800 hover:bg-gray-50'
@@ -127,13 +127,13 @@ const Header: React.FC = () => {
                 {link.label}
               </Link>
             ))}
-            <div className="pt-2 pb-1 px-4 space-y-1">
+            <div className="pt-4 pb-2 space-y-2">
               <button
                 onClick={() => {
                   toggleLanguage();
                   setIsMobileMenuOpen(false);
                 }}
-                className={`w-full text-left py-2 text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-primary-500 hover:bg-primary-50 hover:text-primary-600 active:bg-primary-100 rounded-lg ${
+                className={`w-full text-center py-2.5 text-base font-medium transition-all duration-300 border border-gray-200 hover:border-primary-500 hover:bg-primary-50 hover:text-primary-600 active:bg-primary-100 rounded-lg ${
                   i18n.language === 'en' ? 'px-2.5' : 'px-4'
                 }`}
               >
@@ -142,9 +142,9 @@ const Header: React.FC = () => {
               <Link
                 to="/appointments"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center space-x-2 w-full px-4 py-1.5 text-sm font-semibold text-white rounded-lg bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400"
+                className="flex items-center justify-center space-x-2 w-full px-4 py-2.5 text-base font-semibold text-white rounded-lg bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400"
               >
-                <FaCalendarAlt className="w-3.5 h-3.5" />
+                <FaCalendarAlt className="w-4 h-4" />
                 <span>{t('header.bookAppointment')}</span>
               </Link>
             </div>

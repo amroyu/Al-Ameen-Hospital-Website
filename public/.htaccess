@@ -27,6 +27,12 @@ RewriteRule ^ index.html [QSA,L]
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
     
+    # Fonts
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    
     # CSS, JavaScript
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType text/javascript "access plus 1 month"
@@ -43,11 +49,15 @@ RewriteRule ^ index.html [QSA,L]
     AddOutputFilterByType DEFLATE text/html
     AddOutputFilterByType DEFLATE text/xml
     AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
     AddOutputFilterByType DEFLATE application/xml
     AddOutputFilterByType DEFLATE application/xhtml+xml
     AddOutputFilterByType DEFLATE application/rss+xml
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/x-font-ttf
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE font/opentype font/ttf font/eot font/otf
 </IfModule>
 
 # Security headers
@@ -57,6 +67,7 @@ RewriteRule ^ index.html [QSA,L]
     Header set X-Frame-Options "SAMEORIGIN"
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
     
     # CORS Headers
     Header set Access-Control-Allow-Origin "*"
@@ -65,8 +76,13 @@ RewriteRule ^ index.html [QSA,L]
 # Prevent directory listing
 Options -Indexes
 
-# Prevent access to hidden files
+# Prevent access to sensitive files
 <FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "^(?:package\.json|package-lock\.json|composer\.json|composer\.lock|\.env|\.gitignore|README\.md)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
